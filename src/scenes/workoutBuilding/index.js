@@ -1,0 +1,1 @@
+export {default as WorkoutBuildingScreen} from './workout-building';

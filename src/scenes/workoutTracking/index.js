@@ -1,0 +1,1 @@
+export {default as WorkoutTrackingScreen} from './workout-tracking';
