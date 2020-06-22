@@ -1,6 +1,7 @@
 import React from 'react';
-import { HelloWorld } from './src/components/atoms';
 
-const Hello = () => <HelloWorld name="Wanda"/>;
+import Navigator from './src/navigations';
 
-export default Hello;
+const App = () => <Navigator/>
+
+export default App;

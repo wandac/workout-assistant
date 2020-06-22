@@ -58,8 +58,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz"
       ],
       [
+        "react-native-gesture-handler",
+        "npm:1.6.1"
+      ],
+      [
+        "react-native-reanimated",
+        "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.9.0"
+      ],
+      [
         "react-native-web",
         "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.11.7"
+      ],
+      [
+        "react-navigation",
+        "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:4.3.9"
+      ],
+      [
+        "react-navigation-stack",
+        "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.10.3"
+      ],
+      [
+        "react-navigation-tabs",
+        "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:2.8.13"
       ]
     ],
     "locationBlacklistData": [
@@ -76,7 +96,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:16.9.0"],
             ["react-dom", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:16.9.0"],
             ["react-native", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz"],
-            ["react-native-web", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.11.7"]
+            ["react-native-gesture-handler", "npm:1.6.1"],
+            ["react-native-reanimated", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.9.0"],
+            ["react-native-web", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.11.7"],
+            ["react-navigation", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:4.3.9"],
+            ["react-navigation-stack", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.10.3"],
+            ["react-navigation-tabs", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:2.8.13"]
           ],
           "linkType": "SOFT",
         }]
@@ -2250,6 +2275,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@egjs/hammerjs", [
+        ["npm:2.0.17", {
+          "packageLocation": "./.yarn/cache/@egjs-hammerjs-npm-2.0.17-2e03ba4087-a4d8bc1651.zip/node_modules/@egjs/hammerjs/",
+          "packageDependencies": [
+            ["@egjs/hammerjs", "npm:2.0.17"],
+            ["@types/hammerjs", "npm:2.0.36"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@expo/vector-icons", [
         ["npm:10.2.0", {
           "packageLocation": "./.yarn/cache/@expo-vector-icons-npm-10.2.0-3e9eba0294-4a75c804c8.zip/node_modules/@expo/vector-icons/",
@@ -2509,6 +2544,34 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@react-navigation/core", [
+        ["virtual:00281d41b93cdb8b3a23b9e1337f9e9e72d9557663cb4fc4a132fbb920097a59100eb04c829346a612a5c3d53dd6ab53b784f0ebaa93fd080047b7396e53d2ac#npm:3.7.6", {
+          "packageLocation": "./.yarn/$$virtual/@react-navigation-core-virtual-5c0f9e288d/0/cache/@react-navigation-core-npm-3.7.6-6f6707891a-4cbc54b231.zip/node_modules/@react-navigation/core/",
+          "packageDependencies": [
+            ["@react-navigation/core", "virtual:00281d41b93cdb8b3a23b9e1337f9e9e72d9557663cb4fc4a132fbb920097a59100eb04c829346a612a5c3d53dd6ab53b784f0ebaa93fd080047b7396e53d2ac#npm:3.7.6"],
+            ["hoist-non-react-statics", "npm:3.3.2"],
+            ["path-to-regexp", "npm:1.8.0"],
+            ["query-string", "npm:6.13.1"],
+            ["react", "npm:16.9.0"],
+            ["react-is", "npm:16.13.1"]
+          ],
+          "packagePeers": [
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@react-navigation/native", [
+        ["npm:3.7.13", {
+          "packageLocation": "./.yarn/cache/@react-navigation-native-npm-3.7.13-0901b7ff75-7134dbd22d.zip/node_modules/@react-navigation/native/",
+          "packageDependencies": [
+            ["@react-navigation/native", "npm:3.7.13"],
+            ["hoist-non-react-statics", "npm:3.3.2"],
+            ["react-native-safe-area-view", "virtual:0901b7ff7579cbb576512fc9a567b4051a80d238153c7cc43208d733f928c34256d1d1cfa15beceb444ae7da296c96a6ae342fa267faf88b9cb21a197de20bae#npm:0.14.9"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@types/color-name", [
         ["npm:1.1.1", {
           "packageLocation": "./.yarn/cache/@types-color-name-npm-1.1.1-00b0925070-8311db94a9.zip/node_modules/@types/color-name/",
@@ -2523,6 +2586,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-fbemitter-npm-2.0.32-b8db0c6507-d1c935acba.zip/node_modules/@types/fbemitter/",
           "packageDependencies": [
             ["@types/fbemitter", "npm:2.0.32"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/hammerjs", [
+        ["npm:2.0.36", {
+          "packageLocation": "./.yarn/cache/@types-hammerjs-npm-2.0.36-1456ebf0d4-7ca40b0b93.zip/node_modules/@types/hammerjs/",
+          "packageDependencies": [
+            ["@types/hammerjs", "npm:2.0.36"]
           ],
           "linkType": "HARD",
         }]
@@ -5207,6 +5279,23 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["hoist-non-react-statics", [
+        ["npm:2.5.5", {
+          "packageLocation": "./.yarn/cache/hoist-non-react-statics-npm-2.5.5-e15c7ba611-0a9ed7b8bf.zip/node_modules/hoist-non-react-statics/",
+          "packageDependencies": [
+            ["hoist-non-react-statics", "npm:2.5.5"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:3.3.2", {
+          "packageLocation": "./.yarn/cache/hoist-non-react-statics-npm-3.3.2-e7b709e6c1-d3e3791d6e.zip/node_modules/hoist-non-react-statics/",
+          "packageDependencies": [
+            ["hoist-non-react-statics", "npm:3.3.2"],
+            ["react-is", "npm:16.13.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["hosted-git-info", [
         ["npm:2.8.8", {
           "packageLocation": "./.yarn/cache/hosted-git-info-npm-2.8.8-94a3928c03-3ecc389dc6.zip/node_modules/hosted-git-info/",
@@ -5582,6 +5671,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["isarray", [
+        ["npm:0.0.1", {
+          "packageLocation": "./.yarn/cache/isarray-npm-0.0.1-92e37e0a70-daeda3c236.zip/node_modules/isarray/",
+          "packageDependencies": [
+            ["isarray", "npm:0.0.1"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:1.0.0", {
           "packageLocation": "./.yarn/cache/isarray-npm-1.0.0-db4f547720-b0ff31a290.zip/node_modules/isarray/",
           "packageDependencies": [
@@ -7330,6 +7426,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["path-to-regexp", [
+        ["npm:1.8.0", {
+          "packageLocation": "./.yarn/cache/path-to-regexp-npm-1.8.0-a1904f5c44-4c0d9aaf3f.zip/node_modules/path-to-regexp/",
+          "packageDependencies": [
+            ["path-to-regexp", "npm:1.8.0"],
+            ["isarray", "npm:0.0.1"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["path-type", [
         ["npm:2.0.0", {
           "packageLocation": "./.yarn/cache/path-type-npm-2.0.0-67d5226c36-d028f828df.zip/node_modules/path-type/",
@@ -7585,6 +7691,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["strict-uri-encode", "npm:1.1.0"]
           ],
           "linkType": "HARD",
+        }],
+        ["npm:6.13.1", {
+          "packageLocation": "./.yarn/cache/query-string-npm-6.13.1-9e8c5bfe09-5e640f0cf6.zip/node_modules/query-string/",
+          "packageDependencies": [
+            ["query-string", "npm:6.13.1"],
+            ["decode-uri-component", "npm:0.2.0"],
+            ["split-on-first", "npm:1.1.0"],
+            ["strict-uri-encode", "npm:2.0.0"]
+          ],
+          "linkType": "HARD",
         }]
       ]],
       ["querystringify", [
@@ -7654,6 +7770,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["react-lifecycles-compat", [
+        ["npm:3.0.4", {
+          "packageLocation": "./.yarn/cache/react-lifecycles-compat-npm-3.0.4-d5e285a39e-82176a55ef.zip/node_modules/react-lifecycles-compat/",
+          "packageDependencies": [
+            ["react-lifecycles-compat", "npm:3.0.4"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["react-native", [
         ["virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz", {
           "packageLocation": "./.yarn/unplugged/react-native-virtual-e1e468fa6e/node_modules/react-native/",
@@ -7696,6 +7821,84 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["react-native-gesture-handler", [
+        ["npm:1.6.1", {
+          "packageLocation": "./.yarn/unplugged/react-native-gesture-handler-npm-1.6.1-bde3e49484/node_modules/react-native-gesture-handler/",
+          "packageDependencies": [
+            ["react-native-gesture-handler", "npm:1.6.1"],
+            ["@egjs/hammerjs", "npm:2.0.17"],
+            ["hoist-non-react-statics", "npm:2.5.5"],
+            ["invariant", "npm:2.2.4"],
+            ["prop-types", "npm:15.7.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["react-native-reanimated", [
+        ["virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.9.0", {
+          "packageLocation": "./.yarn/unplugged/react-native-reanimated-virtual-8308df96c6/node_modules/react-native-reanimated/",
+          "packageDependencies": [
+            ["react-native-reanimated", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.9.0"],
+            ["fbjs", "npm:1.0.0"],
+            ["react", "npm:16.9.0"],
+            ["react-native", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz"]
+          ],
+          "packagePeers": [
+            "react",
+            "react-native"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["react-native-safe-area-view", [
+        ["virtual:0901b7ff7579cbb576512fc9a567b4051a80d238153c7cc43208d733f928c34256d1d1cfa15beceb444ae7da296c96a6ae342fa267faf88b9cb21a197de20bae#npm:0.14.9", {
+          "packageLocation": "./.yarn/$$virtual/react-native-safe-area-view-virtual-c10bf48450/0/cache/react-native-safe-area-view-npm-0.14.9-698a5dcf71-e5597a40a7.zip/node_modules/react-native-safe-area-view/",
+          "packageDependencies": [
+            ["react-native-safe-area-view", "virtual:0901b7ff7579cbb576512fc9a567b4051a80d238153c7cc43208d733f928c34256d1d1cfa15beceb444ae7da296c96a6ae342fa267faf88b9cb21a197de20bae#npm:0.14.9"],
+            ["hoist-non-react-statics", "npm:2.5.5"],
+            ["react", null],
+            ["react-native", null]
+          ],
+          "packagePeers": [
+            "react",
+            "react-native"
+          ],
+          "linkType": "HARD",
+        }],
+        ["virtual:17e14182318c0f8d72fe757c3d37e46570315ace147f2a795e197a804793104c5b259983814958c9c6fa7ab152c59dad4944c57e85650c86da35f2760f524574#npm:0.14.9", {
+          "packageLocation": "./.yarn/$$virtual/react-native-safe-area-view-virtual-57b6497bc9/0/cache/react-native-safe-area-view-npm-0.14.9-698a5dcf71-e5597a40a7.zip/node_modules/react-native-safe-area-view/",
+          "packageDependencies": [
+            ["react-native-safe-area-view", "virtual:17e14182318c0f8d72fe757c3d37e46570315ace147f2a795e197a804793104c5b259983814958c9c6fa7ab152c59dad4944c57e85650c86da35f2760f524574#npm:0.14.9"],
+            ["hoist-non-react-statics", "npm:2.5.5"],
+            ["react", "npm:16.9.0"],
+            ["react-native", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz"]
+          ],
+          "packagePeers": [
+            "react",
+            "react-native"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["react-native-tab-view", [
+        ["virtual:17e14182318c0f8d72fe757c3d37e46570315ace147f2a795e197a804793104c5b259983814958c9c6fa7ab152c59dad4944c57e85650c86da35f2760f524574#npm:2.14.4", {
+          "packageLocation": "./.yarn/$$virtual/react-native-tab-view-virtual-635d998b47/0/cache/react-native-tab-view-npm-2.14.4-55ef033d8a-fc9df1dd11.zip/node_modules/react-native-tab-view/",
+          "packageDependencies": [
+            ["react-native-tab-view", "virtual:17e14182318c0f8d72fe757c3d37e46570315ace147f2a795e197a804793104c5b259983814958c9c6fa7ab152c59dad4944c57e85650c86da35f2760f524574#npm:2.14.4"],
+            ["react", "npm:16.9.0"],
+            ["react-native", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz"],
+            ["react-native-gesture-handler", "npm:1.6.1"],
+            ["react-native-reanimated", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.9.0"]
+          ],
+          "packagePeers": [
+            "react",
+            "react-native",
+            "react-native-gesture-handler",
+            "react-native-reanimated"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["react-native-view-shot", [
         ["virtual:9ce8cae4fb0ef0417fce6af4deaf49109f87b235a807e9e44fb68e7147e61141853aea91b785d35a895d6e403c32207b8ee075a3ae7ab51ed41c2d92649ca8e7#npm:3.1.2", {
           "packageLocation": "./.yarn/unplugged/react-native-view-shot-virtual-43a03607e6/node_modules/react-native-view-shot/",
@@ -7732,6 +7935,72 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [
             "react",
             "react-dom"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["react-navigation", [
+        ["virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:4.3.9", {
+          "packageLocation": "./.yarn/$$virtual/react-navigation-virtual-00281d41b9/0/cache/react-navigation-npm-4.3.9-cb9fa033ea-3b667a794b.zip/node_modules/react-navigation/",
+          "packageDependencies": [
+            ["react-navigation", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:4.3.9"],
+            ["@react-navigation/core", "virtual:00281d41b93cdb8b3a23b9e1337f9e9e72d9557663cb4fc4a132fbb920097a59100eb04c829346a612a5c3d53dd6ab53b784f0ebaa93fd080047b7396e53d2ac#npm:3.7.6"],
+            ["@react-navigation/native", "npm:3.7.13"],
+            ["react", "npm:16.9.0"],
+            ["react-native", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz"]
+          ],
+          "packagePeers": [
+            "react",
+            "react-native"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["react-navigation-stack", [
+        ["virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.10.3", {
+          "packageLocation": "./.yarn/$$virtual/react-navigation-stack-virtual-6174e3e82a/0/cache/react-navigation-stack-npm-1.10.3-b4efb30d3a-a8d692de1b.zip/node_modules/react-navigation-stack/",
+          "packageDependencies": [
+            ["react-navigation-stack", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.10.3"],
+            ["prop-types", "npm:15.7.2"],
+            ["react", "npm:16.9.0"],
+            ["react-native", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz"],
+            ["react-native-gesture-handler", "npm:1.6.1"],
+            ["react-native-screens", null],
+            ["react-navigation", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:4.3.9"]
+          ],
+          "packagePeers": [
+            "react",
+            "react-native",
+            "react-native-gesture-handler",
+            "react-native-screens",
+            "react-navigation"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["react-navigation-tabs", [
+        ["virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:2.8.13", {
+          "packageLocation": "./.yarn/$$virtual/react-navigation-tabs-virtual-17e1418231/0/cache/react-navigation-tabs-npm-2.8.13-0d090f6874-6d1d498751.zip/node_modules/react-navigation-tabs/",
+          "packageDependencies": [
+            ["react-navigation-tabs", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:2.8.13"],
+            ["hoist-non-react-statics", "npm:3.3.2"],
+            ["react", "npm:16.9.0"],
+            ["react-lifecycles-compat", "npm:3.0.4"],
+            ["react-native", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz"],
+            ["react-native-gesture-handler", "npm:1.6.1"],
+            ["react-native-reanimated", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.9.0"],
+            ["react-native-safe-area-view", "virtual:17e14182318c0f8d72fe757c3d37e46570315ace147f2a795e197a804793104c5b259983814958c9c6fa7ab152c59dad4944c57e85650c86da35f2760f524574#npm:0.14.9"],
+            ["react-native-screens", null],
+            ["react-native-tab-view", "virtual:17e14182318c0f8d72fe757c3d37e46570315ace147f2a795e197a804793104c5b259983814958c9c6fa7ab152c59dad4944c57e85650c86da35f2760f524574#npm:2.14.4"],
+            ["react-navigation", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:4.3.9"]
+          ],
+          "packagePeers": [
+            "react",
+            "react-native",
+            "react-native-gesture-handler",
+            "react-native-reanimated",
+            "react-native-screens",
+            "react-navigation"
           ],
           "linkType": "HARD",
         }]
@@ -8046,7 +8315,12 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:16.9.0"],
             ["react-dom", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:16.9.0"],
             ["react-native", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz"],
-            ["react-native-web", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.11.7"]
+            ["react-native-gesture-handler", "npm:1.6.1"],
+            ["react-native-reanimated", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.9.0"],
+            ["react-native-web", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.11.7"],
+            ["react-navigation", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:4.3.9"],
+            ["react-navigation-stack", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:1.10.3"],
+            ["react-navigation-tabs", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:2.8.13"]
           ],
           "linkType": "SOFT",
         }]
@@ -8523,6 +8797,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["split-on-first", [
+        ["npm:1.1.0", {
+          "packageLocation": "./.yarn/cache/split-on-first-npm-1.1.0-e2f3ab5e4e-2ef26fee62.zip/node_modules/split-on-first/",
+          "packageDependencies": [
+            ["split-on-first", "npm:1.1.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["split-string", [
         ["npm:3.1.0", {
           "packageLocation": "./.yarn/cache/split-string-npm-3.1.0-df5d83450e-9b610d1509.zip/node_modules/split-string/",
@@ -8613,6 +8896,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/strict-uri-encode-npm-1.1.0-a79c6f7f24-6c80f6998a.zip/node_modules/strict-uri-encode/",
           "packageDependencies": [
             ["strict-uri-encode", "npm:1.1.0"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:2.0.0", {
+          "packageLocation": "./.yarn/cache/strict-uri-encode-npm-2.0.0-1ec3189376-775012e88b.zip/node_modules/strict-uri-encode/",
+          "packageDependencies": [
+            ["strict-uri-encode", "npm:2.0.0"]
           ],
           "linkType": "HARD",
         }]
