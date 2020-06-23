@@ -1,5 +1,6 @@
 import React from 'react';
-import {SafeAreaView, Text } from 'react-native';
+import { SafeAreaView, Text } from 'react-native';
+import { getWorkoutService } from '../../services';
 
 const HomeScreen = ({navigation}) => {
     
@@ -9,5 +10,7 @@ const HomeScreen = ({navigation}) => {
     </SafeAreaView>
     )
 };
+
+getWorkoutService();
 
 export default HomeScreen;
