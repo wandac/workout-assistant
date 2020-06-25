@@ -10,16 +10,18 @@ class BaseService {
             method: 'GET',
             headers: {"Authorization": "Token " + Constants.WGER_API_KEY}
         })
-        .then((response) => response.json())
+        .then(this.processResponse.bind(this))
         .then((responseJson) => {
-            alert(JSON.stringify(responseJson));
             console.log(responseJson);
         })
         .catch((error) => {
-            alert(JSON.stringify(console.error));
             console.error(error);
         });
-        
+    }
+
+    processResponse(response) {
+        if(!response.ok) throw new Error("fetching " + Constants.WGER_API_PATH + this.endpoint + " with status: " + response.status);
+        else return response.json();
     }
 }
 
