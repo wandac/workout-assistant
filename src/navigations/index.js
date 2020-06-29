@@ -1,5 +1,3 @@
-import {createAppContainer} from 'react-navigation';
+import navi from './appNavigator';
 
-import AppNavigator from './appNavigator';
-
-export default createAppContainer(AppNavigator);
+export default navi;

@@ -11,6 +11,6 @@ const HomeScreen = ({navigation}) => {
     )
 };
 
-getWorkoutService();
+// getWorkoutService();
 
 export default HomeScreen;
