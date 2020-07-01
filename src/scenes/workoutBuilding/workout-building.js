@@ -1,38 +1,104 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, Text, View, ActivityIndicator } from 'react-native';
+import { 
+  FlatList, 
+  Text, 
+  View, 
+  ActivityIndicator,
+  TouchableOpacity,
+  SafeAreaView,
+  StyleSheet,
+ } from 'react-native';
+import Constants from 'expo-constants';
 
-import Constants from '../../utils/config';
+import AppConstants from '../../utils/config';
+import { getWorkoutService } from '../../services';
+import { Colors } from '../../styles';
+
+function Item({ id, title, selected, onSelect }) {
+  return (
+    <TouchableOpacity
+      onPress = {() => onSelect(id)}
+      style = {[
+        styles.item,
+        { backgroundColor: selected ? 'tomato' : Colors.WHITE },
+      ]}
+      >
+        <Text style={styles.title}>{title}</Text>
+      </TouchableOpacity>
+  );
+}
 
 const WorkoutBuildingScreen = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
+  const [selected, setSelected] = React.useState(new Map());
+
+  const onSelect = React.useCallback(
+    id => {
+      const newSelected = new Map(selected);
+      newSelected.set(id, !selected.get(id));
+
+      setSelected(newSelected);
+    },
+    [selected],
+  );
+  
+  function processWorkoutServiceResult(apiCallOutcome, responseJson) {
+    switch(apiCallOutcome) {
+
+      case AppConstants.RESPONSE_RECEIVED:
+        setData(responseJson.results);
+        break;
+
+      case AppConstants.API_CALL_COMPLETED:
+        setLoading(false);
+        break;
+    }
+  }
+
   useEffect(() => {
-    fetch(Constants.WGER_API_PATH + Constants.WGER_WORKOUT_ENDPOINT, {
-      method: 'GET',
-      headers: {"Authorization": "Token " + Constants.WGER_API_KEY}
-    })
-    .then((response) => response.json())
-    .then((json) => {
-      setData(json.results);
-    })
-    .catch((error) => console.error(error))
-    .finally(() => setLoading(false));
+    getWorkoutService(processWorkoutServiceResult);
   }, []);
   
   return(
-    <View style={{ flex: 1, padding: 24 }}>
+    <SafeAreaView style={styles.container}>
       {isLoading ? <ActivityIndicator/> : (
         <FlatList
           data={data}
-          keyExtractor={({ id }, index) => id}
+          
           renderItem={({ item }) => (
-            <Text>{item.comment}, {item.creation_date}</Text>
+            <Item
+              id = {item.id}
+              title = {item.comment}
+              selected = {!!selected.get(item.id)}
+              onSelect = {onSelect}
+            />
           )}
+          keyExtractor={item => item.id}
+          extraData={selected}
         />
       )}
-    </View>
+    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: Constants.statusBarHeight,
+  },
+  item: {
+    backgroundColor: Colors.WHITE,
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
+    color: 'gray',
+  },
+});
+
 
 export default WorkoutBuildingScreen;

@@ -1,6 +1,6 @@
 import GetWorkoutService from './GetWorkoutService';
 
-export function getWorkoutService() {
+export function getWorkoutService(callback) {
     let getWorkoutServiceCall = new GetWorkoutService();
-    getWorkoutServiceCall.fetch();
+    getWorkoutServiceCall.fetch(callback);
 }
