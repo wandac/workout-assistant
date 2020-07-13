@@ -11,7 +11,7 @@ import {
 import Constants from 'expo-constants';
 
 import AppConstants from '../../utils/config';
-import { getWorkoutService } from '../../services';
+import { getWorkoutListService } from '../../services';
 import { Colors } from '../../styles';
 
 function Item({ id, title, selected, onSelect }) {
@@ -58,7 +58,7 @@ const WorkoutBuildingScreen = () => {
   }
 
   useEffect(() => {
-    getWorkoutService(processWorkoutServiceResult);
+    getWorkoutListService(processWorkoutServiceResult);
   }, []);
   
   return(

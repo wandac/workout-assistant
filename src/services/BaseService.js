@@ -19,7 +19,6 @@ class BaseService {
             console.error(error);
         })
         .finally(() => {
-            console.log("finally");
             callback(Constants.API_CALL_COMPLETED);
         });
     }

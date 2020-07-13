@@ -1,0 +1,1 @@
+export { default as WorkoutDetailsScreen } from './workout-details';

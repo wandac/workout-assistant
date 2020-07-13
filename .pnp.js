@@ -38,12 +38,20 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:10.2.0"
       ],
       [
+        "@react-native-community/masked-view",
+        "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.1.10"
+      ],
+      [
         "@react-navigation/bottom-tabs",
         "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.6.1"
       ],
       [
         "@react-navigation/native",
         "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.6.1"
+      ],
+      [
+        "@react-navigation/stack",
+        "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.6.2"
       ],
       [
         "babel-preset-expo",
@@ -56,6 +64,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [
         "expo",
         "npm:38.0.4"
+      ],
+      [
+        "expo-constants",
+        "npm:9.1.1"
       ],
       [
         "react",
@@ -115,11 +127,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@babel/core", "npm:7.10.2"],
             ["@expo/vector-icons", "npm:10.2.0"],
+            ["@react-native-community/masked-view", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.1.10"],
             ["@react-navigation/bottom-tabs", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.6.1"],
             ["@react-navigation/native", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.6.1"],
+            ["@react-navigation/stack", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.6.2"],
             ["babel-preset-expo", "npm:8.1.1"],
             ["eslint-import-resolver-babel-module", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.1.2"],
             ["expo", "npm:38.0.4"],
+            ["expo-constants", "npm:9.1.1"],
             ["react", "npm:16.9.0"],
             ["react-dom", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:16.9.0"],
             ["react-native", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz"],
@@ -2574,6 +2589,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["@react-native-community/masked-view", [
+        ["virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.1.10", {
+          "packageLocation": "./.yarn/unplugged/@react-native-community-masked-view-virtual-2a275816bb/node_modules/@react-native-community/masked-view/",
+          "packageDependencies": [
+            ["@react-native-community/masked-view", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.1.10"],
+            ["react", "npm:16.9.0"],
+            ["react-native", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz"]
+          ],
+          "packagePeers": [
+            "react",
+            "react-native"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["@react-navigation/bottom-tabs", [
         ["virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.6.1", {
           "packageLocation": "./.yarn/$$virtual/@react-navigation-bottom-tabs-virtual-36c37349e3/0/cache/@react-navigation-bottom-tabs-npm-5.6.1-99bc092377-a97048bb27.zip/node_modules/@react-navigation/bottom-tabs/",
@@ -2663,6 +2693,33 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@react-navigation/routers", "npm:5.4.8"],
             ["nanoid", "npm:3.1.10"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@react-navigation/stack", [
+        ["virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.6.2", {
+          "packageLocation": "./.yarn/$$virtual/@react-navigation-stack-virtual-270749e4b9/0/cache/@react-navigation-stack-npm-5.6.2-f8a5c00d54-64f533b308.zip/node_modules/@react-navigation/stack/",
+          "packageDependencies": [
+            ["@react-navigation/stack", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.6.2"],
+            ["@react-native-community/masked-view", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.1.10"],
+            ["@react-navigation/native", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.6.1"],
+            ["color", "npm:3.1.2"],
+            ["react", "npm:16.9.0"],
+            ["react-native", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz"],
+            ["react-native-gesture-handler", "npm:1.6.1"],
+            ["react-native-iphone-x-helper", "virtual:36c37349e34ee96111f119efd59b9badf62e708846506abafb47167d8235f231e716dbd7d9655a968841a09ca1bdd9f3c2a32616ce2a1ae92c2d2aeef68ef4bb#npm:1.2.1"],
+            ["react-native-safe-area-context", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:3.0.7"],
+            ["react-native-screens", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:2.9.0"]
+          ],
+          "packagePeers": [
+            "@react-native-community/masked-view",
+            "@react-navigation/native",
+            "react",
+            "react-native",
+            "react-native-gesture-handler",
+            "react-native-safe-area-context",
+            "react-native-screens"
           ],
           "linkType": "HARD",
         }]
@@ -8503,11 +8560,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["root-workspace-0b6124", "workspace:."],
             ["@babel/core", "npm:7.10.2"],
             ["@expo/vector-icons", "npm:10.2.0"],
+            ["@react-native-community/masked-view", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:0.1.10"],
             ["@react-navigation/bottom-tabs", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.6.1"],
             ["@react-navigation/native", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.6.1"],
+            ["@react-navigation/stack", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.6.2"],
             ["babel-preset-expo", "npm:8.1.1"],
             ["eslint-import-resolver-babel-module", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:5.1.2"],
             ["expo", "npm:38.0.4"],
+            ["expo-constants", "npm:9.1.1"],
             ["react", "npm:16.9.0"],
             ["react-dom", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#npm:16.9.0"],
             ["react-native", "virtual:dc3fc578bfa5e06182a4d2be39ede0bc5b74940b1ffe0d70c26892ab140a4699787750fba175dc306292e80b4aa2c8c5f68c2a821e69b2c37e360c0dff36ff66#https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz"],

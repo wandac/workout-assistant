@@ -7,8 +7,8 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { HomeScreen } from '../scenes/home';
 import { SearchScreen } from '../scenes/search';
-import { WorkoutBuildingScreen} from '../scenes/workoutBuilding';
-import { WorkoutTrackingScreen} from '../scenes/workoutTracking';
+import { WorkoutBuildingScreen } from '../scenes/workoutBuilding';
+import { WorkoutTrackingScreen } from '../scenes/workoutTracking';
 
 const Tab = createBottomTabNavigator();
 

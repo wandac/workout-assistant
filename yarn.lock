@@ -1559,6 +1559,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-community/masked-view@npm:^0.1.10":
+  version: 0.1.10
+  resolution: "@react-native-community/masked-view@npm:0.1.10"
+  peerDependencies:
+    react: ^16.0
+    react-native: ">=0.57"
+  checksum: fa87cd4cd99b3f2320ccfb7401466a0cbe13dcb8aa3bedce7333fe81a3c763fa8835f798675f286cca93602248749cc153f46bbe5b87a653bf8e5cfc600845de
+  languageName: node
+  linkType: hard
+
 "@react-navigation/bottom-tabs@npm:^5.6.1":
   version: 5.6.1
   resolution: "@react-navigation/bottom-tabs@npm:5.6.1"
@@ -1634,6 +1644,24 @@ __metadata:
   dependencies:
     nanoid: ^3.1.9
   checksum: a298212bbfc56732a2558cf6d0c51727c46247e4f2ecb97a316becdae8ab8c9e8ba1e48eecc509c3ffcc7dbe8d721c0e9581f7f7b99e69097f18958e08b03981
+  languageName: node
+  linkType: hard
+
+"@react-navigation/stack@npm:^5.6.2":
+  version: 5.6.2
+  resolution: "@react-navigation/stack@npm:5.6.2"
+  dependencies:
+    color: ^3.1.2
+    react-native-iphone-x-helper: ^1.2.1
+  peerDependencies:
+    "@react-native-community/masked-view": ">= 0.1.0"
+    "@react-navigation/native": ^5.0.5
+    react: "*"
+    react-native: "*"
+    react-native-gesture-handler: ">= 1.0.0"
+    react-native-safe-area-context: ">= 0.6.0"
+    react-native-screens: ">= 2.0.0-alpha.0 || >= 2.0.0-beta.0 || >= 2.0.0"
+  checksum: 64f533b308c5a113b2795d2aa1b0254824c278bb0e12038ea376c0997e4a4f10ddd6b4646cf4a5db3a19765aa6e96d9d201aa5259f4a1ce2f8bed07dec3214c6
   languageName: node
   linkType: hard
 
@@ -3294,7 +3322,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-constants@npm:~9.1.1":
+"expo-constants@npm:^9.1.1, expo-constants@npm:~9.1.1":
   version: 9.1.1
   resolution: "expo-constants@npm:9.1.1"
   dependencies:
@@ -6351,7 +6379,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-native-screens@npm:^2.9.0":
+"react-native-screens@npm:~2.9.0":
   version: 2.9.0
   resolution: "react-native-screens@npm:2.9.0"
   peerDependencies:
@@ -6791,18 +6819,21 @@ fsevents@^1.2.7:
   dependencies:
     "@babel/core": ^7.8.6
     "@expo/vector-icons": ^10.2.0
+    "@react-native-community/masked-view": ^0.1.10
     "@react-navigation/bottom-tabs": ^5.6.1
     "@react-navigation/native": ^5.6.1
+    "@react-navigation/stack": ^5.6.2
     babel-preset-expo: ~8.1.0
     eslint-import-resolver-babel-module: ^5.1.0
     expo: ^38.0.0
+    expo-constants: ^9.1.1
     react: ~16.9.0
     react-dom: ~16.9.0
     react-native: "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz"
     react-native-gesture-handler: ^1.4.1
     react-native-reanimated: ^1.2.0
     react-native-safe-area-context: ^3.0.6
-    react-native-screens: ^2.9.0
+    react-native-screens: ~2.9.0
     react-native-vector-icons: ^6.6.0
     react-native-web: ~0.11.7
     react-navigation: ^4.0.0
