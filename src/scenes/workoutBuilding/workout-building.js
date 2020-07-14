@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { 
   FlatList, 
   Text, 
-  View, 
   ActivityIndicator,
   TouchableOpacity,
   SafeAreaView,
@@ -48,7 +47,7 @@ const WorkoutBuildingScreen = () => {
     switch(apiCallOutcome) {
 
       case AppConstants.RESPONSE_RECEIVED:
-        setData(responseJson.results);
+        setData(responseJson);
         break;
 
       case AppConstants.API_CALL_COMPLETED:
@@ -75,7 +74,7 @@ const WorkoutBuildingScreen = () => {
               onSelect = {onSelect}
             />
           )}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.id.toString()}
           extraData={selected}
         />
       )}
