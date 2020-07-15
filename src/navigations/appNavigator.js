@@ -15,9 +15,20 @@ import Constants from '../utils/config';
 
 const HomeStack = createStackNavigator();
 
+const screenOptions = {
+    headerStyle: {
+        backgroundColor: 'tomato',
+    },
+    headerTintColor: 'white',
+    headerTitleStyle: {
+        fontWeight: 'bold',
+    },
+}
+
 function HomeStackScreen() {
     return (
-        <HomeStack.Navigator>
+        <HomeStack.Navigator
+            screenOptions={screenOptions}>
             <HomeStack.Screen name={Constants.HOME_SCREEN} component={HomeScreen}/>
             <HomeStack.Screen name={Constants.DETAILS_SCREEN} component={WorkoutDetailsScreen}/>
         </HomeStack.Navigator>
@@ -28,7 +39,8 @@ const WorkoutStack = createStackNavigator();
 
 function WorkoutStackScreen() {
     return (
-        <WorkoutStack.Navigator>
+        <WorkoutStack.Navigator
+            screenOptions={screenOptions}>
             <WorkoutStack.Screen name={Constants.WORKOUT_SCREEN} component={WorkoutBuildingScreen}/>
             <WorkoutStack.Screen name={Constants.DETAILS_SCREEN} component={WorkoutDetailsScreen}/>
         </WorkoutStack.Navigator>
