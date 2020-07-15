@@ -3,8 +3,11 @@ import {
     SectionList, 
     StyleSheet, 
     Text, 
-    View 
+    View,
+    TouchableOpacity,
 } from 'react-native';
+
+import Constants from '../../utils/config';
 
 const DATA = [
     {
@@ -30,8 +33,12 @@ const DATA = [
     },
 ]
 
-const Item = ({ text }) => (
-    <Text style={styles.item}>{text}</Text>
+const Item = ({ text, navi }) => (
+    <TouchableOpacity onPress = {() => {
+        console.log("item on press");
+        navi.navigate(Constants.DETAILS_SCREEN);}}>
+        <Text style={styles.item}>{text}</Text>
+    </TouchableOpacity>
 );
 
 const SectionHeader = ({ title }) => (
@@ -43,7 +50,7 @@ const HomeScreen = ({navigation}) => {
         <View style={styles.container}>
             <SectionList
                 sections={DATA}
-                renderItem={({item}) => <Item text={item}/>}
+                renderItem={({item}) => <Item text={item} navi={navigation}/>}
                 renderSectionHeader={({section}) => <SectionHeader title={section.title}/>}
                 keyExtractor={(item, index) => index}
             />

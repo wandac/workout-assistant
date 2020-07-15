@@ -10,6 +10,13 @@ const Constants = {
     // HTTP communication outcome
     RESPONSE_RECEIVED: 'RESPONSE_RECEIVED',
     API_CALL_COMPLETED: 'API_CALL_COMPLETED',
+
+    // Screen names - for navigation
+    HOME_SCREEN: 'Home',
+    SEARCH_SCREEN: 'Search',
+    WORKOUT_SCREEN: 'Workout',
+    WORKOUT_TRAKER_SCREEN: 'Workout traker',
+    DETAILS_SCREEN: 'Details',
 };
 
 export default Constants;

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 // You can import Ionicons from @expo/vector-icons/Ionicons if you use Expo or
 // react-native-vector-icons/Ionicons otherwise.
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -9,10 +10,23 @@ import { HomeScreen } from '../scenes/home';
 import { SearchScreen } from '../scenes/search';
 import { WorkoutBuildingScreen } from '../scenes/workoutBuilding';
 import { WorkoutTrackingScreen } from '../scenes/workoutTracking';
+import { WorkoutDetailsScreen } from '../scenes/workoutDetails';
+import Constants from '../utils/config';
+
+const HomeStack = createStackNavigator();
+
+function HomeStackScreen() {
+    return (
+        <HomeStack.Navigator>
+            <HomeStack.Screen name={Constants.HOME_SCREEN} component={HomeScreen}/>
+            <HomeStack.Screen name={Constants.DETAILS_SCREEN} component={WorkoutDetailsScreen}/>
+        </HomeStack.Navigator>
+    )
+}
 
 const Tab = createBottomTabNavigator();
 
-export default function Navi() {
+export default function AppNavigation() {
     return (
         <NavigationContainer>
             <Tab.Navigator
@@ -20,7 +34,7 @@ export default function Navi() {
                     tabBarIcon: ({ focused, color, size }) => {
                         let iconName;
                         
-                        if (route.name === 'Search') {
+                        if (route.name === Constants.SEARCH_SCREEN) {
                             iconName = 'ios-search';
                         }
                         
@@ -34,10 +48,10 @@ export default function Navi() {
                     inactiveTintColor: 'gray',
                 }}>
 
-                <Tab.Screen name="Home" component={HomeScreen} />
-                <Tab.Screen name="Search" component={SearchScreen} />
-                <Tab.Screen name="Workout" component={WorkoutBuildingScreen} />
-                <Tab.Screen name="Workout traker" component={WorkoutTrackingScreen} />
+                <Tab.Screen name={Constants.HOME_SCREEN} component={HomeStackScreen} />
+                <Tab.Screen name={Constants.SEARCH_SCREEN} component={SearchScreen} />
+                <Tab.Screen name={Constants.WORKOUT_SCREEN} component={WorkoutBuildingScreen} />
+                <Tab.Screen name={Constants.WORKOUT_TRAKER_SCREEN} component={WorkoutTrackingScreen} />
             </Tab.Navigator>
         </NavigationContainer>
     );
