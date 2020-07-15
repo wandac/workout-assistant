@@ -6,43 +6,32 @@ import {
   TouchableOpacity,
   SafeAreaView,
   StyleSheet,
- } from 'react-native';
+} from 'react-native';
 import Constants from 'expo-constants';
 
 import AppConstants from '../../utils/config';
 import { getWorkoutListService } from '../../services';
 import { Colors } from '../../styles';
 
-function Item({ id, title, selected, onSelect }) {
+function Item({ id, title, navi }) {
   return (
     <TouchableOpacity
-      onPress = {() => onSelect(id)}
+      onPress = {() => {
+        navi.navigate(AppConstants.DETAILS_SCREEN);
+      }}
       style = {[
         styles.item,
-        { backgroundColor: selected ? 'tomato' : Colors.WHITE },
-      ]}
-      >
-        <Text style={styles.title}>{title}</Text>
-      </TouchableOpacity>
+        { backgroundColor: Colors.WHITE },
+      ]}>
+      <Text style={styles.title}>{title}</Text>
+    </TouchableOpacity>
   );
 }
 
-const WorkoutBuildingScreen = () => {
+const WorkoutBuildingScreen = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
-  const [selected, setSelected] = React.useState(new Map());
-
-  const onSelect = React.useCallback(
-    id => {
-      const newSelected = new Map(selected);
-      newSelected.set(id, !selected.get(id));
-
-      setSelected(newSelected);
-    },
-    [selected],
-  );
-  
   function processWorkoutServiceResult(apiCallOutcome, responseJson) {
     switch(apiCallOutcome) {
 
@@ -70,12 +59,10 @@ const WorkoutBuildingScreen = () => {
             <Item
               id = {item.id}
               title = {item.comment}
-              selected = {!!selected.get(item.id)}
-              onSelect = {onSelect}
+              navi = {navigation}
             />
           )}
           keyExtractor={item => item.id.toString()}
-          extraData={selected}
         />
       )}
     </SafeAreaView>
@@ -98,6 +85,5 @@ const styles = StyleSheet.create({
     color: 'gray',
   },
 });
-
 
 export default WorkoutBuildingScreen;

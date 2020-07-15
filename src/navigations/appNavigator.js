@@ -24,6 +24,17 @@ function HomeStackScreen() {
     )
 }
 
+const WorkoutStack = createStackNavigator();
+
+function WorkoutStackScreen() {
+    return (
+        <WorkoutStack.Navigator>
+            <WorkoutStack.Screen name={Constants.WORKOUT_SCREEN} component={WorkoutBuildingScreen}/>
+            <WorkoutStack.Screen name={Constants.DETAILS_SCREEN} component={WorkoutDetailsScreen}/>
+        </WorkoutStack.Navigator>
+    )
+}
+
 const Tab = createBottomTabNavigator();
 
 export default function AppNavigation() {
@@ -50,7 +61,7 @@ export default function AppNavigation() {
 
                 <Tab.Screen name={Constants.HOME_SCREEN} component={HomeStackScreen} />
                 <Tab.Screen name={Constants.SEARCH_SCREEN} component={SearchScreen} />
-                <Tab.Screen name={Constants.WORKOUT_SCREEN} component={WorkoutBuildingScreen} />
+                <Tab.Screen name={Constants.WORKOUT_SCREEN} component={WorkoutStackScreen} />
                 <Tab.Screen name={Constants.WORKOUT_TRAKER_SCREEN} component={WorkoutTrackingScreen} />
             </Tab.Navigator>
         </NavigationContainer>
