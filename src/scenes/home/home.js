@@ -35,7 +35,8 @@ const DATA = [
 
 const Item = ({ text, navi }) => (
     <TouchableOpacity onPress = {() => {
-        navi.navigate(Constants.DETAILS_SCREEN);}}>
+        // navi.navigate(Constants.DETAILS_SCREEN);
+    }}>
         <Text style={styles.item}>{text}</Text>
     </TouchableOpacity>
 );

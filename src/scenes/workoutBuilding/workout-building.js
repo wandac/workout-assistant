@@ -17,7 +17,10 @@ function Item({ id, title, navi }) {
   return (
     <TouchableOpacity
       onPress = {() => {
-        navi.navigate(AppConstants.DETAILS_SCREEN);
+        navi.navigate(AppConstants.WORKOUT_DETAILS_SCREEN, {
+          itemId: {id},
+          itemTitle: title,
+        });
       }}
       style = {[
         styles.item,

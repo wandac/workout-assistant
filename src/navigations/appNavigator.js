@@ -30,7 +30,7 @@ function HomeStackScreen() {
         <HomeStack.Navigator
             screenOptions={screenOptions}>
             <HomeStack.Screen name={Constants.HOME_SCREEN} component={HomeScreen}/>
-            <HomeStack.Screen name={Constants.DETAILS_SCREEN} component={WorkoutDetailsScreen}/>
+            {/* <HomeStack.Screen name={Constants.WORKOUT_DETAILS_SCREEN} component={WorkoutDetailsScreen}/> */}
         </HomeStack.Navigator>
     )
 }
@@ -42,7 +42,7 @@ function WorkoutStackScreen() {
         <WorkoutStack.Navigator
             screenOptions={screenOptions}>
             <WorkoutStack.Screen name={Constants.WORKOUT_SCREEN} component={WorkoutBuildingScreen}/>
-            <WorkoutStack.Screen name={Constants.DETAILS_SCREEN} component={WorkoutDetailsScreen}/>
+            <WorkoutStack.Screen name={Constants.WORKOUT_DETAILS_SCREEN} component={WorkoutDetailsScreen}/>
         </WorkoutStack.Navigator>
     )
 }

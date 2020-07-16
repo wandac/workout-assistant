@@ -16,7 +16,7 @@ const Constants = {
     SEARCH_SCREEN: 'Search',
     WORKOUT_SCREEN: 'Workout',
     WORKOUT_TRAKER_SCREEN: 'Workout traker',
-    DETAILS_SCREEN: 'Details',
+    WORKOUT_DETAILS_SCREEN: 'Workout details',
 };
 
 export default Constants;
