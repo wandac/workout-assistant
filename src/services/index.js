@@ -6,7 +6,7 @@ export function getWorkoutListService(callback) {
     getWorkoutServiceCall.fetch(callback);
 }
 
-export function getWorkoutByIdService(callback) {
-    let getWorkoutByIdServiceCall = new GetWorkoutByIdService();
+export function getWorkoutByIdService(id, callback) {
+    let getWorkoutByIdServiceCall = new GetWorkoutByIdService(id);
     getWorkoutByIdServiceCall.fetch(callback);
 }
