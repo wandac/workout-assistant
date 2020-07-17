@@ -10,6 +10,7 @@ import {
 
 import { getWorkoutByIdService } from '../../services';
 import Constants from '../../utils/config';
+import { Colors } from '../../styles';
 
 const Item = ({ text, navi }) => (
     <TouchableOpacity onPress = {() => {
@@ -95,7 +96,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: 20,
-        backgroundColor: 'white',
+        backgroundColor: Colors.WHITE,
     },
     sectionHeader: {
         paddingTop: 4,
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
         paddingRight: 12,
         paddingBottom: 4,
         fontSize: 10,
-        color: 'tomato',
+        color: Colors.ACCENT_COLOR,
         textTransform: 'uppercase'
     },
     item: {
@@ -114,11 +115,11 @@ const styles = StyleSheet.create({
         marginBottom: 8,
         fontSize: 18,
         minHeight: 44,
-        backgroundColor: 'white',
-        borderColor: 'gray',
+        backgroundColor: Colors.WHITE,
+        borderColor: Colors.PRIMARY_COLOR,
         borderWidth: 1,
         borderRadius: 8,
-        color: 'gray',
+        color: Colors.PRIMARY_COLOR,
     },
     goal: {
         paddingTop: 4,
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
         paddingRight: 12,
         paddingBottom: 12,
         fontSize: 18,
-        color: 'gray',
+        color: Colors.PRIMARY_COLOR,
         textTransform: 'uppercase'
     },
 })

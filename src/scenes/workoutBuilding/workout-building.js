@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
-    color: 'gray',
+    color: Colors.PRIMARY_COLOR,
   },
 });
 

@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import Constants from '../../utils/config';
+import { Colors } from '../../styles';
 
 const DATA = [
     {
@@ -35,8 +36,7 @@ const DATA = [
 
 const Item = ({ text, navi }) => (
     <TouchableOpacity onPress = {() => {
-        // navi.navigate(Constants.DETAILS_SCREEN);
-    }}>
+        navi.navigate(Constants.DETAILS_SCREEN);}}>
         <Text style={styles.item}>{text}</Text>
     </TouchableOpacity>
 );
@@ -60,32 +60,32 @@ const HomeScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-     flex: 1,
-     paddingTop: 20,
-     backgroundColor: 'white',
+        flex: 1,
+        paddingTop: 20,
+        backgroundColor: Colors.WHITE,
     },
     sectionHeader: {
-      paddingTop: 4,
-      paddingLeft: 12,
-      paddingRight: 12,
-      paddingBottom: 4,
-      fontSize: 10,
-      color: 'tomato',
-      textTransform: 'uppercase'
+        paddingTop: 4,
+        paddingLeft: 12,
+        paddingRight: 12,
+        paddingBottom: 4,
+        fontSize: 10,
+        color: Colors.ACCENT_COLOR,
+        textTransform: 'uppercase'
     },
     item: {
-      padding: 8,
-      marginLeft: 16,
-      marginRight: 16,
-      marginTop: 8,
-      marginBottom: 8,
-      fontSize: 18,
-      minHeight: 44,
-      backgroundColor: 'white',
-      borderColor: 'gray',
-      borderWidth: 1,
-      borderRadius: 8,
-      color: 'gray',
+        padding: 8,
+        marginLeft: 16,
+        marginRight: 16,
+        marginTop: 8,
+        marginBottom: 8,
+        fontSize: 18,
+        minHeight: 44,
+        backgroundColor: Colors.WHITE,
+        borderColor: Colors.PRIMARY_COLOR,
+        borderWidth: 1,
+        borderRadius: 8,
+        color: Colors.PRIMARY_COLOR,
     },
 })
 

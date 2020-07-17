@@ -12,14 +12,16 @@ import { WorkoutBuildingScreen } from '../scenes/workoutBuilding';
 import { WorkoutTrackingScreen } from '../scenes/workoutTracking';
 import { WorkoutDetailsScreen } from '../scenes/workoutDetails';
 import Constants from '../utils/config';
+import { Colors } from '../styles';
 
+console.log(Colors)
 const HomeStack = createStackNavigator();
 
 const screenOptions = {
     headerStyle: {
-        backgroundColor: 'tomato',
+        backgroundColor: Colors.ACCENT_COLOR,
     },
-    headerTintColor: 'white',
+    headerTintColor: Colors.WHITE,
     headerTitleStyle: {
         fontWeight: 'bold',
     },
@@ -67,8 +69,8 @@ export default function AppNavigation() {
                 })}
                 
                 tabBarOptions={{
-                    activeTintColor: 'tomato',
-                    inactiveTintColor: 'gray',
+                    activeTintColor: Colors.ACCENT_COLOR,
+                    inactiveTintColor: Colors.PRIMARY_COLOR,
                 }}>
 
                 <Tab.Screen name={Constants.HOME_SCREEN} component={HomeStackScreen} />
