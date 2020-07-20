@@ -8,7 +8,7 @@ import Constants from '../utils/config';
 
 class GetWorkoutByIdService extends BaseService {
       constructor(id) {
-            super(Constants.WGER_WORKOUT_ENDPOINT + id + "/canonical_representation/");
+            super(Constants.WGER_WORKOUT_BY_ID_ENDPOINT.replace("<id>", id));
       }
 }
 
