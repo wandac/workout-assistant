@@ -6,19 +6,34 @@ import {
     View,
     SectionList,
     TouchableOpacity,
+    Image,
 } from 'react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
-import { getWorkoutByIdService } from '../../services';
+import { 
+    getWorkoutByIdService, 
+} from '../../services';
 import Constants from '../../utils/config';
 import { Colors } from '../../styles';
 
-const Item = ({ text, navi }) => (
-    <TouchableOpacity onPress = {() => {
-        // navi.navigate(Constants.DETAILS_SCREEN);
-    }}>
-        <Text style={styles.item}>{text}</Text>
-    </TouchableOpacity>
-);
+const SEPARATOR = "+";
+
+const Item = ({ text, navi }) => {
+    const exerciseData = text.split(SEPARATOR);
+
+    return (
+        <TouchableOpacity style={styles.exerciseContainer} onPress = {() => {
+            // navi.navigate(Constants.DETAILS_SCREEN);
+        }}>
+            <Ionicons name='ios-fitness' style={styles.exerciseImage} />
+            <Text style={styles.exerciseName}>
+                {exerciseData[0]}
+                {"\n"}
+                <Text style={styles.exerciseRepetitions}>{exerciseData[1]}</Text>
+            </Text>
+        </TouchableOpacity>
+    );
+}
 
 const SectionHeader = ({ title }) => (
     <Text style={styles.sectionHeader}>{title}</Text>
@@ -38,7 +53,6 @@ function Screen({data, navi, goal}) {
     );
 }
 
-
 const WorkoutDetailsScreen = ({route, navigation}) => {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
@@ -57,7 +71,7 @@ const WorkoutDetailsScreen = ({route, navigation}) => {
                     exercise.data = [];
                     if(day.set_list[0]) {
                         day.set_list[0].exercise_list.forEach(currentExercise => {
-                            exercise.data.push(currentExercise.obj.name + " " + currentExercise.setting_text);
+                            exercise.data.push(currentExercise.obj.name + SEPARATOR + currentExercise.setting_text);
                         });
                     }
                     
@@ -107,18 +121,33 @@ const styles = StyleSheet.create({
         color: Colors.ACCENT_COLOR,
         textTransform: 'uppercase'
     },
-    item: {
-        padding: 8,
+    exerciseContainer: {
+        flex: 1,
+        flexDirection: 'row',
         marginLeft: 16,
         marginRight: 16,
         marginTop: 8,
         marginBottom: 8,
-        fontSize: 18,
-        minHeight: 44,
-        backgroundColor: Colors.WHITE,
         borderColor: Colors.PRIMARY_COLOR,
         borderWidth: 1,
         borderRadius: 8,
+        alignItems: 'center',
+    },
+    exerciseImage: {
+        paddingLeft: 16,
+        paddingRight: 8,
+        fontSize:80,
+        color: Colors.PRIMARY_COLOR,
+    },
+    exerciseName: {
+        padding: 8,
+        fontSize: 18,
+        color: Colors.PRIMARY_COLOR,
+    },
+    exerciseRepetitions: {
+        paddingRight: 8,
+        paddingBottom: 8,
+        fontSize: 12,
         color: Colors.PRIMARY_COLOR,
     },
     goal: {
