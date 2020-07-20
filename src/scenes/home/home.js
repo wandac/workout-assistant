@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ThemedSectionList } from '../../components/atoms';
+import { ThemedSectionList } from '../../components/organisms';
 
 const DATA = [
     {
