@@ -14,7 +14,6 @@ import { WorkoutDetailsScreen } from '../scenes/workoutDetails';
 import Constants from '../utils/config';
 import { Colors } from '../styles';
 
-console.log(Colors)
 const HomeStack = createStackNavigator();
 
 const screenOptions = {
@@ -36,6 +35,15 @@ function HomeStackScreen() {
         </HomeStack.Navigator>
     )
 }
+
+const SearchStack = createStackNavigator();
+
+const SearchStackScreen = () => (
+    <SearchStack.Navigator
+        screenOptions={screenOptions}>
+        <SearchStack.Screen name={Constants.SEARCH_SCREEN} component={SearchScreen}/>
+    </SearchStack.Navigator>
+);
 
 const WorkoutStack = createStackNavigator();
 
@@ -74,7 +82,7 @@ export default function AppNavigation() {
                 }}>
 
                 <Tab.Screen name={Constants.HOME_SCREEN} component={HomeStackScreen} />
-                <Tab.Screen name={Constants.SEARCH_SCREEN} component={SearchScreen} />
+                <Tab.Screen name={Constants.SEARCH_SCREEN} component={SearchStackScreen} />
                 <Tab.Screen name={Constants.WORKOUT_SCREEN} component={WorkoutStackScreen} />
                 <Tab.Screen name={Constants.WORKOUT_TRAKER_SCREEN} component={WorkoutTrackingScreen} />
             </Tab.Navigator>
