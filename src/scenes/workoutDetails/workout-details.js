@@ -6,7 +6,6 @@ import {
     View,
     SectionList,
     TouchableOpacity,
-    Image,
 } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
@@ -65,17 +64,19 @@ const WorkoutDetailsScreen = ({route, navigation}) => {
                 var data = [];
                 
                 responseJson.day_list.forEach(day => {
-                    let exercise = {};
-                    exercise.title = day.days_of_week.text + " - " + day.obj.description;
+                    let exerciseObj = {};
+                    exerciseObj.title = day.days_of_week.text + " - " + day.obj.description;
 
-                    exercise.data = [];
-                    if(day.set_list[0]) {
-                        day.set_list[0].exercise_list.forEach(currentExercise => {
-                            exercise.data.push(currentExercise.obj.name + SEPARATOR + currentExercise.setting_text);
-                        });
-                    }
+                    exerciseObj.data = [];
+                    day.set_list.forEach(set => {
+                        if(set) {
+                            set.exercise_list.forEach(exercise => {
+                                exerciseObj.data.push(exercise.obj.name + SEPARATOR + exercise.setting_text);
+                            });
+                        }
+                    });
                     
-                    data = [...data, exercise];
+                    data = [...data, exerciseObj];
                 });
 
                 setGoal(responseJson.obj.comment);
