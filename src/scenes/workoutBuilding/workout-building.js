@@ -13,7 +13,7 @@ import AppConstants from '../../utils/config';
 import { getWorkoutListService } from '../../services';
 import { Colors } from '../../styles';
 
-function Item({ id, title, navi }) {
+function Item({ id, title, creationDate, navi }) {
   return (
     <TouchableOpacity
       onPress = {() => {
@@ -26,7 +26,7 @@ function Item({ id, title, navi }) {
         styles.item,
         { backgroundColor: Colors.WHITE },
       ]}>
-      <Text style={styles.title}>{title}</Text>
+      <Text style={styles.title}>{title != "" ? title : "Workout (" + creationDate + ")"}</Text>
     </TouchableOpacity>
   );
 }
@@ -62,6 +62,7 @@ const WorkoutBuildingScreen = ({navigation}) => {
             <Item
               id = {item.id}
               title = {item.comment}
+              creationDate = {item.creation_date}
               navi = {navigation}
             />
           )}
