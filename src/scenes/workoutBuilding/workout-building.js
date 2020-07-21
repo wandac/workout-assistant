@@ -4,10 +4,10 @@ import {
   Text, 
   ActivityIndicator,
   TouchableOpacity,
-  SafeAreaView,
   StyleSheet,
+  View,
 } from 'react-native';
-import Constants from 'expo-constants';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 import AppConstants from '../../utils/config';
 import { getWorkoutListService } from '../../services';
@@ -31,6 +31,27 @@ function Item({ id, title, creationDate, navi }) {
   );
 }
 
+const WorkoutBuildingLayout = ({data, navigation}) => (
+  <View>
+    <FlatList
+      data={data}
+          
+      renderItem={({ item }) => (
+        <Item
+          id = {item.id}
+          title = {item.comment}
+          creationDate = {item.creation_date}
+          navi = {navigation}
+       />
+      )}
+      keyExtractor={item => item.id.toString()}
+    />
+    <TouchableOpacity style={styles.fabBackground}>
+      <Ionicons name='ios-add' style={styles.fabIcon} />
+    </TouchableOpacity>
+  </View> 
+);
+
 const WorkoutBuildingScreen = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -53,30 +74,16 @@ const WorkoutBuildingScreen = ({navigation}) => {
   }, []);
   
   return(
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       {isLoading ? <ActivityIndicator/> : (
-        <FlatList
-          data={data}
-          
-          renderItem={({ item }) => (
-            <Item
-              id = {item.id}
-              title = {item.comment}
-              creationDate = {item.creation_date}
-              navi = {navigation}
-            />
-          )}
-          keyExtractor={item => item.id.toString()}
-        />
+        <WorkoutBuildingLayout data={data} navigation={navigation}/>
       )}
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginTop: Constants.statusBarHeight,
   },
   item: {
     backgroundColor: Colors.WHITE,
@@ -88,6 +95,28 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: Colors.PRIMARY_COLOR,
   },
+  fabBackground: {
+    position: "fixed",
+    right: 20,
+    bottom: 70,
+    width: 50,
+    height: 50,
+    backgroundColor: Colors.ACCENT_COLOR,
+    borderRadius: '50%',
+    alignItems: 'center',
+    shadowColor: "#000",
+    shadowOffset: {
+	    width: 0,
+	    height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  fabIcon: {
+    color: Colors.WHITE,
+    fontSize: 46,
+  }
 });
 
 export default WorkoutBuildingScreen;
