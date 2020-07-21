@@ -57,6 +57,14 @@ function WorkoutStackScreen() {
     )
 }
 
+const WorkoutTrackerStack = createStackNavigator();
+
+const WorkoutTrackerStackScreen = () => (
+    <WorkoutTrackerStack.Navigator screenOptions={screenOptions}>
+        <WorkoutTrackerStack.Screen name={Constants.WORKOUT_TRAKER_SCREEN} component={WorkoutTrackingScreen}/>
+    </WorkoutTrackerStack.Navigator>
+);
+
 const Tab = createBottomTabNavigator();
 
 export default function AppNavigation() {
@@ -84,8 +92,8 @@ export default function AppNavigation() {
                 <Tab.Screen name={Constants.HOME_SCREEN} component={HomeStackScreen} />
                 <Tab.Screen name={Constants.SEARCH_SCREEN} component={SearchStackScreen} />
                 <Tab.Screen name={Constants.WORKOUT_SCREEN} component={WorkoutStackScreen} />
-                <Tab.Screen name={Constants.WORKOUT_TRAKER_SCREEN} component={WorkoutTrackingScreen} />
+                <Tab.Screen name={Constants.WORKOUT_TRAKER_SCREEN} component={WorkoutTrackerStackScreen} />
             </Tab.Navigator>
         </NavigationContainer>
     );
-  }
+}
