@@ -1559,7 +1559,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-community/masked-view@npm:^0.1.10":
+"@react-native-community/masked-view@npm:0.1.10":
   version: 0.1.10
   resolution: "@react-native-community/masked-view@npm:0.1.10"
   peerDependencies:
@@ -6314,7 +6314,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-native-gesture-handler@npm:^1.4.1":
+"react-native-gesture-handler@npm:~1.6.0":
   version: 1.6.1
   resolution: "react-native-gesture-handler@npm:1.6.1"
   dependencies:
@@ -6335,7 +6335,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"react-native-reanimated@npm:^1.2.0":
+"react-native-reanimated@npm:~1.9.0":
   version: 1.9.0
   resolution: "react-native-reanimated@npm:1.9.0"
   dependencies:
@@ -6354,16 +6354,6 @@ fsevents@^1.2.7:
     react: "*"
     react-native: "*"
   checksum: 92fe0fa528cc0677167fab4b603c2abe937137d2765051ee1ac76a3c2bbd168234f4bd982da25ab6454a0824be90798377da884daba38a057092e081748f2845
-  languageName: node
-  linkType: hard
-
-"react-native-safe-area-context@npm:^3.0.6":
-  version: 3.0.7
-  resolution: "react-native-safe-area-context@npm:3.0.7"
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: 166d003aae9c78204b16bea23f39208085bba603769b597c07cf96d7d2cbd9524d1a16e6f7aafc3f95b92b6c3e42a410b8279139ad80b3cb67ab9ece7f49f981
   languageName: node
   linkType: hard
 
@@ -6819,7 +6809,7 @@ fsevents@^1.2.7:
   dependencies:
     "@babel/core": ^7.8.6
     "@expo/vector-icons": ^10.2.0
-    "@react-native-community/masked-view": ^0.1.10
+    "@react-native-community/masked-view": 0.1.10
     "@react-navigation/bottom-tabs": ^5.6.1
     "@react-navigation/native": ^5.6.1
     "@react-navigation/stack": ^5.6.2
@@ -6830,9 +6820,9 @@ fsevents@^1.2.7:
     react: ~16.9.0
     react-dom: ~16.9.0
     react-native: "https://github.com/expo/react-native/archive/sdk-37.0.1.tar.gz"
-    react-native-gesture-handler: ^1.4.1
-    react-native-reanimated: ^1.2.0
-    react-native-safe-area-context: ^3.0.6
+    react-native-gesture-handler: ~1.6.0
+    react-native-reanimated: ~1.9.0
+    react-native-safe-area-context: 3.0.2
     react-native-screens: ~2.9.0
     react-native-vector-icons: ^6.6.0
     react-native-web: ~0.11.7
