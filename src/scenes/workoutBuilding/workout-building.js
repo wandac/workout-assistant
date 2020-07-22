@@ -96,13 +96,13 @@ const styles = StyleSheet.create({
     color: Colors.PRIMARY_COLOR,
   },
   fabBackground: {
-    position: "fixed",
+    position: "absolute",
     right: 20,
-    bottom: 70,
-    width: 50,
-    height: 50,
+    bottom: 20,
+    width: 56,
+    height: 56,
     backgroundColor: Colors.ACCENT_COLOR,
-    borderRadius: '50%',
+    borderRadius: 28,
     alignItems: 'center',
     shadowColor: "#000",
     shadowOffset: {
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   },
   fabIcon: {
     color: Colors.WHITE,
-    fontSize: 46,
+    fontSize: 54,
   }
 });
 
