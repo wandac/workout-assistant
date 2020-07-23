@@ -10,8 +10,9 @@ import {
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import AppConstants from '../../utils/config';
-import { getWorkoutListService } from '../../services';
+import { getWorkoutListService, workoutService} from '../../services';
 import { Colors } from '../../styles';
+import Constants from '../../utils/config';
 
 function Item({ id, title, creationDate, navi }) {
   return (
@@ -46,11 +47,38 @@ const WorkoutBuildingLayout = ({data, navigation}) => (
       )}
       keyExtractor={item => item.id.toString()}
     />
-    <TouchableOpacity style={styles.fabBackground}>
+    <TouchableOpacity 
+      onPress = {() => {
+          console.log("fab pressed");
+          const request = {
+            url: Constants.WGER_API_PATH + Constants.WGER_WORKOUT_ENDPOINT, 
+            method: 'POST', 
+            body: '{"comment": "bar"}',
+            headers: {
+              foo: 'bar'
+            }
+          };
+          workoutService(request, processWorkoutServiceResponse);
+        }
+      }
+      style = {styles.fabBackground}>
       <Ionicons name='ios-add' style={styles.fabIcon} />
     </TouchableOpacity>
   </View> 
 );
+
+function processWorkoutServiceResponse(apiCallOutcome, responseJson) {
+  switch(apiCallOutcome) {
+
+    case AppConstants.RESPONSE_RECEIVED:
+      console.log("RESPONSE_RECEIVED");
+      break;
+
+    case AppConstants.API_CALL_COMPLETED:
+      console.log("API_CALL_COMPLETED");
+      break;
+  }
+}
 
 const WorkoutBuildingScreen = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
@@ -95,16 +123,19 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: Colors.PRIMARY_COLOR,
   },
+  screensContainer:{
+    maxHeight: '100vh'
+  },
   fabBackground: {
     position: "absolute",
     right: 20,
-    bottom: 20,
+    top: 20,
     width: 56,
     height: 56,
     backgroundColor: Colors.ACCENT_COLOR,
     borderRadius: 28,
     alignItems: 'center',
-    shadowColor: "#000",
+    shadowColor: Colors.BLACK,
     shadowOffset: {
 	    width: 0,
 	    height: 2,
