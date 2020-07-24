@@ -8,7 +8,7 @@ import {
   View,
   Modal,
   TouchableHighlight,
-  TextInput
+  TextInput,
 } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
@@ -40,12 +40,13 @@ const WorkoutBuildingScreen = ({navigation}) => {
   const [data, setData] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [value, onChangeText] = useState('Workout name');
+  const [isWorkoutPlanEmpty, setWorkoutPlanEmpty] = useState(false);
 
   function processWorkoutServiceResult(apiCallOutcome, responseJson) {
     switch(apiCallOutcome) {
 
       case AppConstants.RESPONSE_RECEIVED:
-        setData(responseJson);
+        (Array.isArray(responseJson) && responseJson.length) ? setData(responseJson) : setWorkoutPlanEmpty(true);
         break;
 
       case AppConstants.API_CALL_COMPLETED:
@@ -85,6 +86,13 @@ const WorkoutBuildingScreen = ({navigation}) => {
   
   return(
     <View style={styles.container}>
+      {isWorkoutPlanEmpty ? 
+        <Text style={styles.emptyStateText}>
+          Dear Fat,{"\n"}Prepare to die.{"\n"}
+          <Text style={{...styles.emptyStateText, color: Colors.ACCENT_COLOR}}>xo,</Text>
+          {"\n"}Me{"\n"}
+        </Text> : null}
+
       {isLoading ? <ActivityIndicator size="large" color={Colors.ACCENT_COLOR}/> : (
         <FlatList
           data={data}
@@ -152,7 +160,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'stretch',
-    justifyContent: 'center'
+    justifyContent: 'center',
+  },
+
+  emptyStateText: {
+    marginTop: 100,
+    backgroundColor: Colors.WHITE,
+    alignSelf: "center",
+    borderColor: Colors.PRIMARY_COLOR,
+    color: Colors.PRIMARY_COLOR,
+    borderWidth: 2,
+    padding: 20,
   },
 
   // list item 
