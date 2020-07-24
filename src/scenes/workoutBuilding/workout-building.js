@@ -6,6 +6,9 @@ import {
   TouchableOpacity,
   StyleSheet,
   View,
+  Modal,
+  TouchableHighlight,
+  TextInput
 } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
@@ -32,57 +35,11 @@ function Item({ id, title, creationDate, navi }) {
   );
 }
 
-const WorkoutBuildingLayout = ({data, navigation}) => (
-  <View>
-    <FlatList
-      data={data}
-          
-      renderItem={({ item }) => (
-        <Item
-          id = {item.id}
-          title = {item.comment}
-          creationDate = {item.creation_date}
-          navi = {navigation}
-       />
-      )}
-      keyExtractor={item => item.id.toString()}
-    />
-    <TouchableOpacity 
-      onPress = {() => {
-          console.log("fab pressed");
-          const request = {
-            url: Constants.WGER_API_PATH + Constants.WGER_WORKOUT_ENDPOINT, 
-            method: 'POST', 
-            body: '{"comment": "bar"}',
-            headers: {
-              foo: 'bar'
-            }
-          };
-          workoutService(request, processWorkoutServiceResponse);
-        }
-      }
-      style = {styles.fabBackground}>
-      <Ionicons name='ios-add' style={styles.fabIcon} />
-    </TouchableOpacity>
-  </View> 
-);
-
-function processWorkoutServiceResponse(apiCallOutcome, responseJson) {
-  switch(apiCallOutcome) {
-
-    case AppConstants.RESPONSE_RECEIVED:
-      console.log("RESPONSE_RECEIVED");
-      break;
-
-    case AppConstants.API_CALL_COMPLETED:
-      console.log("API_CALL_COMPLETED");
-      break;
-  }
-}
-
 const WorkoutBuildingScreen = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [value, onChangeText] = useState('Workout name');
 
   function processWorkoutServiceResult(apiCallOutcome, responseJson) {
     switch(apiCallOutcome) {
@@ -97,22 +54,108 @@ const WorkoutBuildingScreen = ({navigation}) => {
     }
   }
 
+  function callWorkoutService(workoutName) {
+    console.log(workoutName);
+    setLoading(true);
+  
+    const request = {
+      url: Constants.WGER_API_PATH + Constants.WGER_WORKOUT_ENDPOINT, 
+      method: 'POST', 
+      body: '{"comment": "<workout_name>"}'.replace("<workout_name>", workoutName),
+    };
+    workoutService(request, processWorkoutServiceResponse);
+  }
+
+  function processWorkoutServiceResponse(apiCallOutcome, responseJson) {
+    switch(apiCallOutcome) {
+  
+      case AppConstants.RESPONSE_RECEIVED:
+        // TODO
+        break;
+  
+      case AppConstants.API_CALL_COMPLETED:
+        setLoading(false);
+        break;
+    }
+  }
+
   useEffect(() => {
     getWorkoutListService(processWorkoutServiceResult);
   }, []);
   
   return(
     <View style={styles.container}>
-      {isLoading ? <ActivityIndicator/> : (
-        <WorkoutBuildingLayout data={data} navigation={navigation}/>
+      {isLoading ? <ActivityIndicator size="large" color={Colors.ACCENT_COLOR}/> : (
+        <FlatList
+          data={data}
+          
+          renderItem={({ item }) => (
+            <Item
+              id = {item.id}
+              title = {item.comment}
+              creationDate = {item.creation_date}
+              navi = {navigation}
+            />
+          )}
+          keyExtractor={item => item.id.toString()}
+        />
       )}
+
+      <TouchableOpacity 
+        onPress = {() => {
+            setModalVisible(true);
+          }
+        }
+        style = {styles.fabBackground}>
+        <Ionicons name='ios-add' style={styles.fabIcon} />
+      </TouchableOpacity>
+
+      <Modal
+        animationType="none"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {}}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>  
+
+            <TextInput
+              style={styles.input}
+              onChangeText={text => onChangeText(text)}
+              value={value}/>
+
+            <View style={styles.buttonContainer}>
+            <TouchableHighlight
+              style={styles.submitButton}
+              onPress={() => {
+                callWorkoutService(value);
+                setModalVisible(!modalVisible);
+              }}>
+              <Text style={styles.textStyle}>Add workout</Text>
+            </TouchableHighlight>
+
+            <TouchableHighlight
+              style={{...styles.submitButton, backgroundColor: Colors.PRIMARY_COLOR}}
+              onPress={() => {
+                setModalVisible(!modalVisible);
+              }}>
+              <Text style={styles.textStyle}>Cancel</Text>
+            </TouchableHighlight>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    alignItems: 'stretch',
+    justifyContent: 'center'
   },
+
+  // list item 
   item: {
     backgroundColor: Colors.WHITE,
     padding: 20,
@@ -123,13 +166,12 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: Colors.PRIMARY_COLOR,
   },
-  screensContainer:{
-    maxHeight: '100vh'
-  },
+
+  // fab
   fabBackground: {
     position: "absolute",
     right: 20,
-    top: 20,
+    bottom: 20,
     width: 56,
     height: 56,
     backgroundColor: Colors.ACCENT_COLOR,
@@ -147,7 +189,54 @@ const styles = StyleSheet.create({
   fabIcon: {
     color: Colors.WHITE,
     fontSize: 54,
-  }
+  },
+
+  // popup
+  centeredView: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  modalView: {
+    backgroundColor: Colors.WHITE,
+    borderRadius: 20,
+    padding: 32,
+    shadowColor: Colors.BLACK,
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  input: { 
+    minHeight: 40, 
+    paddingLeft: 12,
+    paddingRight: 12,
+    marginRight: 10,
+    marginLeft: 10,
+    marginBottom: 20,
+    borderColor: Colors.PRIMARY_COLOR, 
+    borderWidth: 1,
+    borderRadius: 20,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+  },
+  submitButton: {
+    backgroundColor: Colors.ACCENT_COLOR,
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+    marginRight: 10,
+    marginLeft: 10,
+  },
+  textStyle: {
+    color: Colors.WHITE,
+    fontWeight: "bold",
+    textAlign: "center"
+  },
 });
 
 export default WorkoutBuildingScreen;
