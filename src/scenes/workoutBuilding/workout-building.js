@@ -41,6 +41,7 @@ const WorkoutBuildingScreen = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [value, onChangeText] = useState('Workout name');
   const [isWorkoutPlanEmpty, setWorkoutPlanEmpty] = useState(false);
+  const [newWorkoutId, setNewWorkoutId] = useState("");
 
   function processWorkoutServiceResult(apiCallOutcome, responseJson) {
     switch(apiCallOutcome) {
@@ -71,7 +72,7 @@ const WorkoutBuildingScreen = ({navigation}) => {
     switch(apiCallOutcome) {
   
       case AppConstants.RESPONSE_RECEIVED:
-        // TODO
+        setNewWorkoutId(responseJson.id);
         break;
   
       case AppConstants.API_CALL_COMPLETED:
@@ -82,7 +83,7 @@ const WorkoutBuildingScreen = ({navigation}) => {
 
   useEffect(() => {
     getWorkoutListService(processWorkoutServiceResult);
-  }, []);
+  }, [newWorkoutId]);
   
   return(
     <View style={styles.container}>
