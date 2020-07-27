@@ -5,15 +5,26 @@ import {
     Text, 
     View,
     TouchableOpacity,
+    Linking,
 } from 'react-native';
 
 import { Colors } from '../../styles';
 
 const Item = ({ text, navi }) => (
     <TouchableOpacity onPress = {() => {
-        // navi.navigate(Constants.DETAILS_SCREEN);
+        let url = JSON.parse(text).url;
+        if(url != "") {
+            Linking.openURL(url);
+        } else {
+            console.log("navigation to be implemented");
+        }
         }}>
-        <Text style={styles.item}>{text}</Text>
+        {JSON.parse(text).title === "" ? 
+            <Text style={styles.item}>{JSON.parse(text).text}</Text> : 
+            <Text style={styles.item}>
+                <Text style={{...styles.item, color: Colors.ACCENT_COLOR}}>{JSON.parse(text).title + ": "}</Text>
+                {JSON.parse(text).text}
+            </Text>}
     </TouchableOpacity>
 );
 
