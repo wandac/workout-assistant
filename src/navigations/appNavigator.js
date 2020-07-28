@@ -14,6 +14,7 @@ import { WorkoutTrackingScreen } from '../scenes/workoutTracking';
 import { WorkoutDetailsScreen } from '../scenes/workoutDetails';
 import Constants from '../utils/config';
 import { Colors } from '../styles';
+import { HeaderButton } from '../components/molecules';
 
 const HomeStack = createStackNavigator();
 
@@ -51,9 +52,11 @@ const WorkoutStack = createStackNavigator();
 function WorkoutStackScreen() {
     return (
         <WorkoutStack.Navigator
-            screenOptions={screenOptions}>
+            screenOptions={screenOptions} >
             <WorkoutStack.Screen name={Constants.WORKOUT_SCREEN} component={WorkoutBuildingScreen}/>
-            <WorkoutStack.Screen name={Constants.WORKOUT_DETAILS_SCREEN} component={WorkoutDetailsScreen}/>
+            <WorkoutStack.Screen name={Constants.WORKOUT_DETAILS_SCREEN} component={WorkoutDetailsScreen} options={{
+                headerRight: () => (<HeaderButton icon='baseline_add_white_24dp'/>),
+            }}/>
         </WorkoutStack.Navigator>
     )
 }
