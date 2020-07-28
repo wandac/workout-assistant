@@ -5,10 +5,10 @@ import {
     StyleSheet,
 } from 'react-native';
 
-const HeaderButton = (icon) => {
+const HeaderButton = (props) => {
     let myIcon;
 
-    switch (icon) {
+    switch (props.icon) {
         case 'baseline_add_white_24dp':
             myIcon = require('../../assets/images/baseline_add_white_24dp.png');
             break;
