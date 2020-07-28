@@ -18,11 +18,7 @@ const HeaderButton = (props) => {
     
     return (
     <TouchableOpacity 
-        onPress = {() => {
-            // TODO
-            console.log("header button pressed");
-          }
-        }>
+        onPress = {props.onIconPress}>
         <Image
             style={styles.headerIcon}
             source={myIcon}/>

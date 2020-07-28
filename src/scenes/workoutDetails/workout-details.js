@@ -14,6 +14,7 @@ import {
 } from '../../services';
 import Constants from '../../utils/config';
 import { Colors } from '../../styles';
+import { HeaderButton } from '../../components/molecules';
 
 const SEPARATOR = "+";
 
@@ -52,20 +53,36 @@ function Screen({data, navi, goal}) {
     );
 }
 
+function displayAddTrainingDayModal() {
+    console.log("displayAddTrainingDayModal");
+}
+
 const WorkoutDetailsScreen = ({route, navigation}) => {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const [goal, setGoal] = useState("");
+    const [trainingDays, setTrainingDays] = useState([]);
+
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+          headerRight: () => (
+            // display add training day icon only if there is no day added yet
+            trainingDays.length === 0 ? <HeaderButton icon='baseline_add_white_24dp' onIconPress={() => {displayAddTrainingDayModal();}}/> : null
+          ),
+        });
+    }, [navigation, trainingDays]);
 
     function processWorkoutByIdServiceResult(apiCallOutcome, responseJson) {
         switch(apiCallOutcome) {
     
             case Constants.RESPONSE_RECEIVED:
                 var data = [];
+                var trainingDays = [];
                 
                 responseJson.day_list.forEach(day => {
                     let exerciseObj = {};
                     exerciseObj.title = day.days_of_week.text + " - " + day.obj.description;
+                    trainingDays = trainingDays.concat(day.obj.day);
 
                     exerciseObj.data = [];
                     day.set_list.forEach(set => {
@@ -78,9 +95,10 @@ const WorkoutDetailsScreen = ({route, navigation}) => {
                     
                     data = [...data, exerciseObj];
                 });
-
+                
                 setGoal(responseJson.obj.comment);
                 setData(data);
+                setTrainingDays(trainingDays);
                 break;
     
             case Constants.API_CALL_COMPLETED:
