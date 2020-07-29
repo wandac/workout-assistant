@@ -18,6 +18,20 @@ import { HeaderButton } from '../../components/molecules';
 
 const SEPARATOR = "+";
 
+function Screen({data, navi, goal}) {
+    return (
+        <View>
+            <Text style={styles.goal}>Goal: {goal}</Text>
+            <SectionList
+                sections={data}
+                renderItem={({item}) => <Item text={item} navi={navi}/>}
+                renderSectionHeader={({section}) => <SectionHeader title={section.title}/>}
+                keyExtractor={(item, index) => index}
+            />
+        </View>
+    );
+}
+
 const Item = ({ text, navi }) => {
     const exerciseData = text.split(SEPARATOR);
 
@@ -39,29 +53,20 @@ const SectionHeader = ({ title }) => (
     <Text style={styles.sectionHeader}>{title}</Text>
 );
 
-function Screen({data, navi, goal}) {
-    return (
-        <View>
-            <Text style={styles.goal}>Goal: {goal}</Text>
-            <SectionList
-                sections={data}
-                renderItem={({item}) => <Item text={item} navi={navi}/>}
-                renderSectionHeader={({section}) => <SectionHeader title={section.title}/>}
-                keyExtractor={(item, index) => index}
-            />
-        </View>
-    );
-}
-
 function displayAddTrainingDayModal() {
     console.log("displayAddTrainingDayModal");
 }
+
 
 const WorkoutDetailsScreen = ({route, navigation}) => {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const [goal, setGoal] = useState("");
     const [trainingDays, setTrainingDays] = useState([]);
+
+    useEffect(() => {
+        getWorkoutByIdService(route.params.itemId, processWorkoutByIdServiceResult);
+    }, []);
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
@@ -105,15 +110,6 @@ const WorkoutDetailsScreen = ({route, navigation}) => {
                 setLoading(false);
                 break;
         }
-    }
-
-    if(route.params) {
-        const { itemId } = route.params;
-        const { itemTitle } = route.params;
-        
-        useEffect(() => {
-            getWorkoutByIdService(itemId.id, processWorkoutByIdServiceResult);
-        }, []);
     }
 
     return (

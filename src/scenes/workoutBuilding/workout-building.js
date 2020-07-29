@@ -22,7 +22,7 @@ function Item({ id, title, creationDate, navi }) {
     <TouchableOpacity
       onPress = {() => {
         navi.navigate(AppConstants.WORKOUT_DETAILS_SCREEN, {
-          itemId: {id},
+          itemId: id,
           itemTitle: title,
         });
       }}
