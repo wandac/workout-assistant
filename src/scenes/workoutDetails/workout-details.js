@@ -62,7 +62,7 @@ const WorkoutDetailsScreen = ({route, navigation}) => {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const [goal, setGoal] = useState("");
-    const [trainingDays, setTrainingDays] = useState([]);
+    const [showAddTrainingIcon, setAddTrainingIconVisibility] = useState(false);
 
     useEffect(() => {
         getWorkoutByIdService(route.params.itemId, processWorkoutByIdServiceResult);
@@ -71,11 +71,10 @@ const WorkoutDetailsScreen = ({route, navigation}) => {
     React.useLayoutEffect(() => {
         navigation.setOptions({
           headerRight: () => (
-            // display add training day icon only if there is no day added yet
-            trainingDays.length === 0 ? <HeaderButton icon='baseline_add_white_24dp' onIconPress={() => {displayAddTrainingDayModal();}}/> : null
+            showAddTrainingIcon ? <HeaderButton icon='baseline_add_white_24dp' onIconPress={() => {displayAddTrainingDayModal();}}/> : null
           ),
         });
-    }, [navigation, trainingDays]);
+    }, [navigation, showAddTrainingIcon]);
 
     function processWorkoutByIdServiceResult(apiCallOutcome, responseJson) {
         switch(apiCallOutcome) {
@@ -103,7 +102,10 @@ const WorkoutDetailsScreen = ({route, navigation}) => {
                 
                 setGoal(responseJson.obj.comment);
                 setData(data);
-                setTrainingDays(trainingDays);
+
+                if(trainingDays.length === 0) 
+                    setAddTrainingIconVisibility(true);
+
                 break;
     
             case Constants.API_CALL_COMPLETED:
