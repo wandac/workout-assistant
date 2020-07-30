@@ -19,6 +19,15 @@ const Constants = {
     WORKOUT_SCREEN: 'Workout',
     WORKOUT_TRAKER_SCREEN: 'Workout traker',
     WORKOUT_DETAILS_SCREEN: 'Workout details',
+
+    // Days of the week - day picker
+    MONDAY: 'Monday',
+    TUESDAY: 'Tuesday',
+    WEDNESDAY: 'Wednesday',
+    THURSDAY: 'Thursday',
+    FRIDAY: 'Friday',
+    SATURDAY: 'Saturday',
+    SUNDAY: 'Sunday',
 };
 
 export default Constants;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { 
     Text,
     ActivityIndicator,
@@ -15,6 +15,7 @@ import {
 import Constants from '../../utils/config';
 import { Colors } from '../../styles';
 import { HeaderButton } from '../../components/molecules';
+import { AddTrainingDayModal } from '../../components/organisms';
 
 const SEPARATOR = "+";
 
@@ -53,16 +54,12 @@ const SectionHeader = ({ title }) => (
     <Text style={styles.sectionHeader}>{title}</Text>
 );
 
-function displayAddTrainingDayModal() {
-    console.log("displayAddTrainingDayModal");
-}
-
-
 const WorkoutDetailsScreen = ({route, navigation}) => {
     const [isLoading, setLoading] = useState(true);
     const [data, setData] = useState([]);
     const [goal, setGoal] = useState("");
     const [showAddTrainingIcon, setAddTrainingIconVisibility] = useState(false);
+    const [displayAddTrainingDayModal, setAddTrainingDayModalVisibility] = useState(false);
 
     useEffect(() => {
         getWorkoutByIdService(route.params.itemId, processWorkoutByIdServiceResult);
@@ -71,7 +68,7 @@ const WorkoutDetailsScreen = ({route, navigation}) => {
     React.useLayoutEffect(() => {
         navigation.setOptions({
           headerRight: () => (
-            showAddTrainingIcon ? <HeaderButton icon='baseline_add_white_24dp' onIconPress={() => {displayAddTrainingDayModal();}}/> : null
+            showAddTrainingIcon ? <HeaderButton icon='baseline_add_white_24dp' onIconPress={() => {showAddTrainingDayModal();}}/> : null
           ),
         });
     }, [navigation, showAddTrainingIcon]);
@@ -114,11 +111,17 @@ const WorkoutDetailsScreen = ({route, navigation}) => {
         }
     }
 
+    function showAddTrainingDayModal() {
+        setAddTrainingDayModalVisibility(true);
+    }
+
     return (
         <View style={styles.container}>
             {isLoading ? <ActivityIndicator/> : (
                 <Screen data ={data} navi={navigation} goal={goal}/>
-            )} 
+            )}
+
+            <AddTrainingDayModal isVisible = {displayAddTrainingDayModal} setVisible = {setAddTrainingDayModalVisibility}/>
         </View>
     )
 };
