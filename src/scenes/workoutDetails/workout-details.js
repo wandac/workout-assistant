@@ -115,13 +115,17 @@ const WorkoutDetailsScreen = ({route, navigation}) => {
         setAddTrainingDayModalVisibility(true);
     }
 
+    function makeAddWorkoutDayServiceCall(description, days) {
+        console.log(description, days, route.params.itemId);
+    }
+
     return (
         <View style={styles.container}>
             {isLoading ? <ActivityIndicator/> : (
                 <Screen data ={data} navi={navigation} goal={goal}/>
             )}
 
-            <AddTrainingDayModal isVisible = {displayAddTrainingDayModal} setVisible = {setAddTrainingDayModalVisibility}/>
+            <AddTrainingDayModal isVisible = {displayAddTrainingDayModal} setVisible = {setAddTrainingDayModalVisibility} callAddDayService={makeAddWorkoutDayServiceCall}/>
         </View>
     )
 };

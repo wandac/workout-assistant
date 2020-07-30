@@ -13,7 +13,7 @@ import Constants from '../../utils/config';
 import { Colors } from '../../styles';
 
 
-const AddTrainingDayModal = ({isVisible, setVisible}) => {
+const AddTrainingDayModal = ({isVisible, setVisible, callAddDayService}) => {
     const [isMondayEnabled, setMondayEnabled] = useState(false);
     const [isTuesdayEnabled, setTuesdayEnabled] = useState(false);
     const [isWednesdayEnabled, setWednesdayEnabled] = useState(false);
@@ -21,6 +21,10 @@ const AddTrainingDayModal = ({isVisible, setVisible}) => {
     const [isFridayEnabled, setFridayEnabled] = useState(false);
     const [isSaturdayEnabled, setSaturdayEnabled] = useState(false);
     const [isSundayEnabled, setSundayEnabled] = useState(false);
+    const [inputValue, onChangeText] = useState('');
+    const [showInputValidationError, setInputValidationErrorVisibility] = useState(false);
+    const [showDayPickerValidationError, setDayPickerValidationErrorVisibility] = useState(false);
+
     const toggleMondaySwitch = () => setMondayEnabled(previousState => !previousState);
     const toggleTuesdaySwitch = () => setTuesdayEnabled(previousState => !previousState);
     const toggleWednesdaySwitch = () => setWednesdayEnabled(previousState => !previousState);
@@ -28,6 +32,74 @@ const AddTrainingDayModal = ({isVisible, setVisible}) => {
     const toggleFridaySwitch = () => setFridayEnabled(previousState => !previousState);
     const toggleSaturdaySwitch = () => setSaturdayEnabled(previousState => !previousState);
     const toggleSundaySwitch = () => setSundayEnabled(previousState => !previousState);
+
+    function getSelectedDays() {
+        let selectedDays = [];
+
+        const DAY_SELECTION = [
+            {
+                day: 1,
+                isSelected: isMondayEnabled,
+            },
+            {
+                day: 2,
+                isSelected: isTuesdayEnabled,
+            },
+            {
+                day: 3,
+                isSelected: isWednesdayEnabled,
+            },
+            {
+                day: 4,
+                isSelected: isThursdayEnabled,
+            },
+            {
+                day: 5,
+                isSelected: isFridayEnabled,
+            },
+            {
+                day: 6,
+                isSelected: isSaturdayEnabled,
+            },
+            {
+                day: 7,
+                isSelected: isSundayEnabled,
+            },
+        ];
+
+        DAY_SELECTION.forEach(function(item) {
+            if(item.isSelected) selectedDays.push(item.day);
+        });
+
+        return selectedDays;
+    }
+
+    function validateUserInput() {
+        return validateDescription() && validateDaySelection();
+    }
+
+    function validateDescription() {
+        const validInput = (inputValue !== "");
+
+        !validInput ? setInputValidationErrorVisibility(true) : setInputValidationErrorVisibility(false);
+
+        return validInput;
+    }
+
+    function validateDaySelection() {
+        const validDaySelection = (getSelectedDays().length > 0);
+
+        !validDaySelection ? setDayPickerValidationErrorVisibility(true) : setDayPickerValidationErrorVisibility(false);
+        
+        return validDaySelection;
+    }
+
+    function closeModal() {
+        setInputValidationErrorVisibility(false);
+        setDayPickerValidationErrorVisibility(false);
+        setVisible(false);
+        // TODO reset user input - day picker and description states
+    }
 
     const DayPickerRow = ({day}) => {
         let toggleSwitch;
@@ -93,9 +165,15 @@ const AddTrainingDayModal = ({isVisible, setVisible}) => {
             onRequestClose={() => {}}>
             <View style={styles.centeredView}>
                 <View style={styles.modalView}>  
+                    {showInputValidationError ? <Text style={{...styles.textStyle, color: Colors.ACCENT_COLOR}}>What is done on this day?{'\n'}What body parts are trained?</Text> : (null)}
+                    
                     <TextInput
                         style={styles.input}
-                        placeholder="Description"/>
+                        placeholder="Description"
+                        value={inputValue}
+                        onChangeText={text => onChangeText(text)}/>
+
+                    {showDayPickerValidationError ? <Text style={{...styles.textStyle, color: Colors.ACCENT_COLOR}}>Select at least one day</Text> : (null)}
 
                     <DayPickerRow day={Constants.MONDAY}/>
                     <DayPickerRow day={Constants.TUESDAY}/>
@@ -109,8 +187,10 @@ const AddTrainingDayModal = ({isVisible, setVisible}) => {
                         <TouchableHighlight
                             style={styles.submitButton}
                             onPress={() => {
-                                // TODO
-                                setVisible(false);
+                                if(validateUserInput()) {
+                                    closeModal();
+                                    callAddDayService(inputValue, getSelectedDays());
+                                }
                             }}>
                             <Text style={styles.textStyle}>Add workout day</Text>
                         </TouchableHighlight>
@@ -118,7 +198,7 @@ const AddTrainingDayModal = ({isVisible, setVisible}) => {
                         <TouchableHighlight
                             style={{...styles.submitButton, backgroundColor: Colors.PRIMARY_COLOR}}
                             onPress={() => {
-                                setVisible(false);
+                                closeModal();
                             }}>
                             <Text style={styles.textStyle}>Cancel</Text>
                         </TouchableHighlight>
