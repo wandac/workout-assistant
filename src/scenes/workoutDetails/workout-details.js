@@ -11,6 +11,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { 
     getWorkoutByIdService, 
+    dayService,
 } from '../../services';
 import Constants from '../../utils/config';
 import { Colors } from '../../styles';
@@ -37,9 +38,7 @@ const Item = ({ text, navi }) => {
     const exerciseData = text.split(SEPARATOR);
 
     return (
-        <TouchableOpacity style={styles.exerciseContainer} onPress = {() => {
-            // navi.navigate(Constants.DETAILS_SCREEN);
-        }}>
+        <TouchableOpacity style={styles.exerciseContainer} onPress = {() => {}}>
             <Ionicons name='ios-fitness' style={styles.exerciseImage} />
             <Text style={styles.exerciseName}>
                 {exerciseData[0]}
@@ -60,10 +59,11 @@ const WorkoutDetailsScreen = ({route, navigation}) => {
     const [goal, setGoal] = useState("");
     const [showAddTrainingIcon, setAddTrainingIconVisibility] = useState(false);
     const [displayAddTrainingDayModal, setAddTrainingDayModalVisibility] = useState(false);
+    const [newTrainingDayId, setNewTrainingDayId] = useState("");
 
     useEffect(() => {
         getWorkoutByIdService(route.params.itemId, processWorkoutByIdServiceResult);
-    }, []);
+    }, [newTrainingDayId]);
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
@@ -116,7 +116,34 @@ const WorkoutDetailsScreen = ({route, navigation}) => {
     }
 
     function makeAddWorkoutDayServiceCall(description, days) {
-        console.log(description, days, route.params.itemId);
+        setLoading(true);
+        
+        const body = {
+            "description": description, 
+            "training": route.params.itemId, 
+            "day": days  
+        };
+    
+        const request = {
+            url: Constants.WGER_API_PATH + Constants.WGER_DAY_ENDPOINT, 
+            method: 'POST', 
+            body: JSON.stringify(body),
+        };
+
+        dayService(request, processDayServiceResponse);
+    }
+
+    function processDayServiceResponse(apiCallOutcome, responseJson) {
+        switch(apiCallOutcome) {
+    
+            case Constants.RESPONSE_RECEIVED:
+                setNewTrainingDayId(responseJson.id);
+                setAddTrainingIconVisibility(false);
+                break;
+            case Constants.API_CALL_COMPLETED:
+                setLoading(false);
+                break;
+        }
     }
 
     return (
@@ -125,7 +152,10 @@ const WorkoutDetailsScreen = ({route, navigation}) => {
                 <Screen data ={data} navi={navigation} goal={goal}/>
             )}
 
-            <AddTrainingDayModal isVisible = {displayAddTrainingDayModal} setVisible = {setAddTrainingDayModalVisibility} callAddDayService={makeAddWorkoutDayServiceCall}/>
+            <AddTrainingDayModal 
+                isVisible = {displayAddTrainingDayModal} 
+                setVisible = {setAddTrainingDayModalVisibility} 
+                callAddDayService={makeAddWorkoutDayServiceCall}/>
         </View>
     )
 };
