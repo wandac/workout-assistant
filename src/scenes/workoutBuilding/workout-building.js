@@ -6,9 +6,6 @@ import {
   TouchableOpacity,
   StyleSheet,
   View,
-  Modal,
-  TouchableHighlight,
-  TextInput,
 } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
@@ -16,6 +13,7 @@ import AppConstants from '../../utils/config';
 import { getWorkoutListService, workoutService} from '../../services';
 import { Colors } from '../../styles';
 import Constants from '../../utils/config';
+import { AddWorkoutModal } from '../../components/organisms';
 
 function Item({ id, title, creationDate, navi }) {
   return (
@@ -39,7 +37,6 @@ const WorkoutBuildingScreen = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
-  const [value, onChangeText] = useState('Workout name');
   const [isWorkoutPlanEmpty, setWorkoutPlanEmpty] = useState(false);
   const [newWorkoutId, setNewWorkoutId] = useState("");
 
@@ -57,7 +54,6 @@ const WorkoutBuildingScreen = ({navigation}) => {
   }
 
   function callWorkoutService(workoutName) {
-    console.log(workoutName);
     setLoading(true);
   
     const request = {
@@ -119,40 +115,10 @@ const WorkoutBuildingScreen = ({navigation}) => {
         <Ionicons name='ios-add' style={styles.fabIcon} />
       </TouchableOpacity>
 
-      <Modal
-        animationType="none"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {}}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>  
-
-            <TextInput
-              style={styles.input}
-              onChangeText={text => onChangeText(text)}
-              value={value}/>
-
-            <View style={styles.buttonContainer}>
-            <TouchableHighlight
-              style={styles.submitButton}
-              onPress={() => {
-                callWorkoutService(value);
-                setModalVisible(!modalVisible);
-              }}>
-              <Text style={styles.textStyle}>Add workout</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight
-              style={{...styles.submitButton, backgroundColor: Colors.PRIMARY_COLOR}}
-              onPress={() => {
-                setModalVisible(!modalVisible);
-              }}>
-              <Text style={styles.textStyle}>Cancel</Text>
-            </TouchableHighlight>
-            </View>
-          </View>
-        </View>
-      </Modal>
+      <AddWorkoutModal 
+        isVisible = { modalVisible } 
+        setVisible = { setModalVisible } 
+        callWorkoutService = { callWorkoutService }/>
     </View>
   );
 }
@@ -208,53 +174,6 @@ const styles = StyleSheet.create({
   fabIcon: {
     color: Colors.WHITE,
     fontSize: 54,
-  },
-
-  // popup
-  centeredView: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  modalView: {
-    backgroundColor: Colors.WHITE,
-    borderRadius: 20,
-    padding: 32,
-    shadowColor: Colors.BLACK,
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  input: { 
-    minHeight: 40, 
-    paddingLeft: 12,
-    paddingRight: 12,
-    marginRight: 10,
-    marginLeft: 10,
-    marginBottom: 20,
-    borderColor: Colors.PRIMARY_COLOR, 
-    borderWidth: 1,
-    borderRadius: 20,
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-  },
-  submitButton: {
-    backgroundColor: Colors.ACCENT_COLOR,
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-    marginRight: 10,
-    marginLeft: 10,
-  },
-  textStyle: {
-    color: Colors.WHITE,
-    fontWeight: "bold",
-    textAlign: "center"
   },
 });
 
