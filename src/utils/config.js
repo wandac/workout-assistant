@@ -9,6 +9,7 @@ const Constants = {
     WGER_WORKOUT_BY_ID_ENDPOINT: "workout/<id>/canonical_representation/",
     WGER_EXERCISE_IMAGE_ENDPOINT: "exerciseimage/<id>/thumbnails/",
     WGER_DAY_ENDPOINT: "day/",
+    WGER_EXERCISE_ENDPOINT: "exercise/?language=2&status=2",
 
     // HTTP communication outcome
     RESPONSE_RECEIVED: 'RESPONSE_RECEIVED',

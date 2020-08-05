@@ -1,11 +1,14 @@
 import 'react-native-gesture-handler';
-import * as React from 'react';
+import React, { useEffect, useState, Component } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 // You can import Ionicons from @expo/vector-icons/Ionicons if you use Expo or
 // react-native-vector-icons/Ionicons otherwise.
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { ActivityIndicator } from 'react-native';
 
 import { HomeScreen } from '../scenes/home';
 import { SearchScreen } from '../scenes/search';
@@ -14,6 +17,8 @@ import { WorkoutTrackingScreen } from '../scenes/workoutTracking';
 import { WorkoutDetailsScreen } from '../scenes/workoutDetails';
 import Constants from '../utils/config';
 import { Colors } from '../styles';
+import { fetchExercise } from '../redux/actions/exerciseActions';
+import { render } from 'react-dom';
 
 const HomeStack = createStackNavigator();
 
@@ -32,7 +37,6 @@ function HomeStackScreen() {
         <HomeStack.Navigator
             screenOptions={screenOptions}>
             <HomeStack.Screen name={Constants.HOME_SCREEN} component={HomeScreen}/>
-            {/* <HomeStack.Screen name={Constants.WORKOUT_DETAILS_SCREEN} component={WorkoutDetailsScreen}/> */}
         </HomeStack.Navigator>
     )
 }
@@ -68,33 +72,54 @@ const WorkoutTrackerStackScreen = () => (
 
 const Tab = createBottomTabNavigator();
 
-export default function AppNavigation() {
-    return (
-        <NavigationContainer>
-            <Tab.Navigator
-                screenOptions={({ route }) => ({
-                    tabBarIcon: ({ focused, color, size }) => {
-                        let iconName;
-                        
-                        if (route.name === Constants.SEARCH_SCREEN) {
-                            iconName = 'ios-search';
-                        }
-                        
-                        // You can return any component that you like here!
-                        return <Ionicons name={iconName} size={size} color={color} />;
-                    },
-                })}
-                
-                tabBarOptions={{
-                    activeTintColor: Colors.ACCENT_COLOR,
-                    inactiveTintColor: Colors.PRIMARY_COLOR,
-                }}>
+class AppNavigation extends Component {
+    componentDidMount() {
+        this.props.fetchExercise();
+    }
 
-                <Tab.Screen name={Constants.HOME_SCREEN} component={HomeStackScreen} />
-                <Tab.Screen name={Constants.SEARCH_SCREEN} component={SearchStackScreen} />
-                <Tab.Screen name={Constants.WORKOUT_SCREEN} component={WorkoutStackScreen} />
-                <Tab.Screen name={Constants.WORKOUT_TRAKER_SCREEN} component={WorkoutTrackerStackScreen} />
-            </Tab.Navigator>
-        </NavigationContainer>
-    );
+    render() {
+        if (this.props.exercises.isFetching) {
+            return (<ActivityIndicator size="large" />);    //TODO position loader
+        }
+        return (
+            <NavigationContainer>
+                <Tab.Navigator
+                    screenOptions={({ route }) => ({
+                        tabBarIcon: ({ focused, color, size }) => {
+                            let iconName;
+                            
+                            if (route.name === Constants.SEARCH_SCREEN) {
+                                iconName = 'ios-search';
+                            }
+                            
+                            // You can return any component that you like here!
+                            return <Ionicons name={iconName} size={size} color={color} />;
+                        },
+                    })}
+                    
+                    tabBarOptions={{
+                        activeTintColor: Colors.ACCENT_COLOR,
+                        inactiveTintColor: Colors.PRIMARY_COLOR,
+                    }}>
+
+                    <Tab.Screen name={Constants.HOME_SCREEN} component={HomeStackScreen} />
+                    <Tab.Screen name={Constants.SEARCH_SCREEN} component={SearchStackScreen} />
+                    <Tab.Screen name={Constants.WORKOUT_SCREEN} component={WorkoutStackScreen} />
+                    <Tab.Screen name={Constants.WORKOUT_TRAKER_SCREEN} component={WorkoutTrackerStackScreen} />
+                </Tab.Navigator>
+            </NavigationContainer>
+        );
+    }
 }
+
+AppNavigation.propTypes = {
+    fetchExercise: PropTypes.func.isRequired
+}
+
+const mapStateToProps = state => {
+    return {
+        exercises: state
+    };
+}
+
+export default connect(mapStateToProps, { fetchExercise })(AppNavigation);
