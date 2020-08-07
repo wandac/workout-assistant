@@ -5,7 +5,7 @@ import {
  } from '../actions/types';
 
  const initialState = {
-     isFetching: false,
+     isFetching: true,
      errorMessage: "",
      exercises: []
  };
