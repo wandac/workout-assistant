@@ -11,20 +11,10 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { Colors } from '../../styles';
 
-function Item({ id, title, subtitle }) {
-    return (
-        <TouchableOpacity
-            onPress = {() => {}}
-            style = {styles.item}>
-            <Text style={styles.title}>{title}</Text>
-        </TouchableOpacity>
-    );
-}
-
-const SearchableList = ({list}) => {
+const SearchableList = props => {
     const [inputValue, onChangeText] = useState('');
-    const [searchResult, setSearchResult] = useState(list);
-    let data = list;
+    const [searchResult, setSearchResult] = useState(props.list);
+    let data = props.list;
 
     const searchFilterFunction = text => {
         const newData = data.filter(item => {
@@ -38,9 +28,30 @@ const SearchableList = ({list}) => {
         setSearchResult(newData);
     };
 
-    function onInputTextChange(text) {
+    const onInputTextChange = (text) => {
         onChangeText(text);
         searchFilterFunction(text)
+    };
+
+    const Item = ({ id, title, subtitle }) => {
+        return (
+            <TouchableOpacity
+                onPress = {() => {
+                    searchById(id);
+                }}
+                style = {styles.item}>
+                <Text style={styles.title}>{title}</Text>
+            </TouchableOpacity>
+        );
+    }
+
+    const  searchById = (id) => {
+        hideSugestedSearchList();
+        props.displaySearchResult(id);
+    }
+
+    function hideSugestedSearchList() {
+        onChangeText("");
     }
 
     return(

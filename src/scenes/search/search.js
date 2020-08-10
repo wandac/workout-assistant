@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import {
     StyleSheet,
     View
@@ -7,12 +7,33 @@ import { connect } from 'react-redux';
 
 import { Colors } from '../../styles';
 import SearchableList from '../../components/organisms/searchableList';
+import ExerciseDetails from '../../components/organisms/exerciseDetails';
 
 class SearchScreen extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {isSearchResultVisible: false};
+    }
+
+    displaySearchResult(id) {
+        console.log("displaySearchResult ", id);
+        this.setSearchResultVisibility(true);
+    }
+
+    setSearchResultVisibility(visivility) {
+        this.setState({
+            isSearchResultVisible: visivility
+        });
+    }
+
     render() {
         return (
             <View style={styles.container}>
-                <SearchableList list = {this.props.wgerExercises.exercises}/>
+                <SearchableList 
+                    list = {this.props.wgerExercises.exercises}
+                    displaySearchResult = {(id) => this.displaySearchResult(id)}/>
+                
+                {this.state.isSearchResultVisible ? <ExerciseDetails/> : null}
             </View>
         );
     }
