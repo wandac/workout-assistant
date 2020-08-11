@@ -86,8 +86,6 @@ const SearchableList = props => {
 
 const styles = StyleSheet.create ({
     container: {
-        marginLeft: 16,
-        marginRight: 16,
         marginTop: 8,
     },
 
