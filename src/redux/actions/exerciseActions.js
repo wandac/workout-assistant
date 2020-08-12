@@ -20,6 +20,7 @@ export const fetchingExerciseFailure = (error) => ({
     payload: error
 });
 
+// curl -X GET https://wger.de/api/v2/exercise/?language=2&status=2
 export const fetchExercise = () => {
     return async dispatch => {
         dispatch(fetchingExerciseRequest());

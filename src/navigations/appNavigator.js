@@ -100,6 +100,9 @@ class AppNavigation extends Component {
                     tabBarOptions={{
                         activeTintColor: Colors.ACCENT_COLOR,
                         inactiveTintColor: Colors.PRIMARY_COLOR,
+                        style: {
+                            height: 50,
+                        },
                     }}>
 
                     <Tab.Screen name={Constants.HOME_SCREEN} component={HomeStackScreen} />

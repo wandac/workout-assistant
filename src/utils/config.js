@@ -10,6 +10,7 @@ const Constants = {
     WGER_EXERCISE_IMAGE_ENDPOINT: "exerciseimage/<id>/thumbnails/",
     WGER_DAY_ENDPOINT: "day/",
     WGER_EXERCISE_ENDPOINT: "exercise/?language=2&status=2",
+    WGER_SET_ENDPOINT: "set/",
 
     // HTTP communication outcome
     RESPONSE_RECEIVED: 'RESPONSE_RECEIVED',

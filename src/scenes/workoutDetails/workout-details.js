@@ -6,12 +6,15 @@ import {
     View,
     SectionList,
     TouchableOpacity,
+    Button,
+    SafeAreaView
 } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { 
     getWorkoutByIdService, 
     dayService,
+    setService
 } from '../../services';
 import Constants from '../../utils/config';
 import { Colors } from '../../styles';
@@ -25,13 +28,53 @@ function Screen({data, navi, goal}) {
         <View>
             <Text style={styles.goal}>Goal: {goal}</Text>
             <SectionList
+                style={styles.listContainer}
                 sections={data}
                 renderItem={({item}) => <Item text={item} navi={navi}/>}
-                renderSectionHeader={({section}) => <SectionHeader title={section.title}/>}
+                renderSectionHeader={({section}) => <SectionHeader title={section.title.split(SEPARATOR)[0]}/>}
                 keyExtractor={(item, index) => index}
+                renderSectionFooter={({section}) => {
+                    return(<Button 
+                        title="Add exercises to this workout day" 
+                        onPress={()=>{handleSectionFooterSelection(section);}}
+                        color={Colors.PRIMARY_COLOR}
+                        />);}}
             />
         </View>
     );
+}
+
+function handleSectionFooterSelection(section) {
+    const exerciseday = section.title.split(SEPARATOR)[1];
+    const order = section.data.length + 1;
+
+    console.log("handleSectionFooterSelection", "exerciseday: ", exerciseday, "order: " + order);
+    callSetService(order, exerciseday);
+}
+
+function callSetService(order, exerciseday) {
+    // setLoading(true);
+
+    const body = {
+        "order": order,
+        "sets": null, // user input
+        "exerciseday": exerciseday,
+        "exercises": [] // user input
+    };
+
+    console.log(body);
+
+    const request = {
+        url: Constants.WGER_API_PATH + Constants.WGER_SET_ENDPOINT, 
+        method: 'POST', 
+        body: JSON.stringify(body),
+    };
+
+    // setService(request, processSetServiceResponse);
+}
+
+function processSetServiceResponse() {
+    // TBD
 }
 
 const Item = ({ text, navi }) => {
@@ -82,7 +125,10 @@ const WorkoutDetailsScreen = ({route, navigation}) => {
                 
                 responseJson.day_list.forEach(day => {
                     let exerciseObj = {};
-                    exerciseObj.title = day.days_of_week.text + " - " + day.obj.description;
+                    let title = day.days_of_week.text + " - " + day.obj.description;
+                    let id = day.obj.id;
+
+                    exerciseObj.title = title + SEPARATOR + id;
                     trainingDays = trainingDays.concat(day.obj.day);
 
                     exerciseObj.data = [];
@@ -147,7 +193,7 @@ const WorkoutDetailsScreen = ({route, navigation}) => {
     }
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             {isLoading ? <ActivityIndicator/> : (
                 <Screen data ={data} navi={navigation} goal={goal}/>
             )}
@@ -156,7 +202,7 @@ const WorkoutDetailsScreen = ({route, navigation}) => {
                 isVisible = {displayAddTrainingDayModal} 
                 setVisible = {setAddTrainingDayModalVisibility} 
                 callAddDayService={makeAddWorkoutDayServiceCall}/>
-        </View>
+        </SafeAreaView>
     )
 };
 
@@ -164,12 +210,16 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: 20,
+        paddingLeft: 12,
+        paddingRight: 12,
+        paddingBottom: 50,
         backgroundColor: Colors.WHITE,
+    },
+    listContainer: {
+        paddingLeft: 12,
     },
     sectionHeader: {
         paddingTop: 4,
-        paddingLeft: 12,
-        paddingRight: 12,
         paddingBottom: 4,
         fontSize: 10,
         color: Colors.ACCENT_COLOR,
@@ -178,8 +228,8 @@ const styles = StyleSheet.create({
     exerciseContainer: {
         flex: 1,
         flexDirection: 'row',
-        marginLeft: 16,
-        marginRight: 16,
+        marginLeft: 8,
+        marginRight: 4,
         marginTop: 8,
         marginBottom: 8,
         borderColor: Colors.PRIMARY_COLOR,
@@ -206,13 +256,11 @@ const styles = StyleSheet.create({
     },
     goal: {
         paddingTop: 4,
-        paddingLeft: 12,
-        paddingRight: 12,
         paddingBottom: 12,
         fontSize: 18,
         color: Colors.PRIMARY_COLOR,
         textTransform: 'uppercase'
-    },
+    }    
 })
 
 export default WorkoutDetailsScreen;
