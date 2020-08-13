@@ -36,7 +36,7 @@ function Screen({data, navi, goal}) {
                 renderSectionFooter={({section}) => {
                     return(<Button 
                         title="Add exercises to this workout day" 
-                        onPress={()=>{handleSectionFooterSelection(section);}}
+                        onPress={()=>{handleSectionFooterSelection(section, navi);}}
                         color={Colors.PRIMARY_COLOR}
                         />);}}
             />
@@ -44,12 +44,13 @@ function Screen({data, navi, goal}) {
     );
 }
 
-function handleSectionFooterSelection(section) {
+function handleSectionFooterSelection(section, navi) {
     const exerciseday = section.title.split(SEPARATOR)[1];
     const order = section.data.length + 1;
 
     console.log("handleSectionFooterSelection", "exerciseday: ", exerciseday, "order: " + order);
     callSetService(order, exerciseday);
+    navi.navigate(Constants.WORKOUT_ADD_EXERCISE_SCREEN);
 }
 
 function callSetService(order, exerciseday) {

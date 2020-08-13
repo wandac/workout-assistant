@@ -22,6 +22,7 @@ const Constants = {
     WORKOUT_SCREEN: 'Workout',
     WORKOUT_TRAKER_SCREEN: 'Workout traker',
     WORKOUT_DETAILS_SCREEN: 'Workout details',
+    WORKOUT_ADD_EXERCISE_SCREEN: 'Workout details - Add exercise',
 
     // Days of the week - day picker
     MONDAY: 'Monday',

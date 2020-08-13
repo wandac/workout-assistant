@@ -14,7 +14,7 @@ import { HomeScreen } from '../scenes/home';
 import { SearchScreen } from '../scenes/search';
 import { WorkoutBuildingScreen } from '../scenes/workoutBuilding';
 import { WorkoutTrackingScreen } from '../scenes/workoutTracking';
-import { WorkoutDetailsScreen } from '../scenes/workoutDetails';
+import { WorkoutDetailsScreen, WorkoutAddExerciseScreen } from '../scenes/workoutDetails';
 import Constants from '../utils/config';
 import { Colors } from '../styles';
 import { fetchExercise } from '../redux/actions/exerciseActions';
@@ -58,6 +58,7 @@ function WorkoutStackScreen() {
             screenOptions={screenOptions} >
             <WorkoutStack.Screen name={Constants.WORKOUT_SCREEN} component={WorkoutBuildingScreen}/>
             <WorkoutStack.Screen name={Constants.WORKOUT_DETAILS_SCREEN} component={WorkoutDetailsScreen}/>
+            <WorkoutStack.Screen name={Constants.WORKOUT_ADD_EXERCISE_SCREEN} component={WorkoutAddExerciseScreen}/> 
         </WorkoutStack.Navigator>
     )
 }
