@@ -38,9 +38,10 @@ class SearchScreen extends Component {
 
     getExerciseDetails() {
         let id = this.state.searchId;
-        let selectedExercise = this.props.wgerExercises.exercises[0];
+        const { results } = this.props.wgerExercises.exercises;
+        let selectedExercise = results[0];
 
-        this.props.wgerExercises.exercises.forEach(exercise => {
+        results.forEach(exercise => {
             if(exercise.id === id) {
                 selectedExercise = exercise;
             }
@@ -53,7 +54,7 @@ class SearchScreen extends Component {
         return (
             <View style={styles.container}>
                 <SearchableList 
-                    list = {this.props.wgerExercises.exercises}
+                    list = {this.props.wgerExercises.exercises.results}
                     displaySearchResult = {(id) => this.displaySearchResult(id)}/>
                 
                 {this.state.isSearchResultVisible ? <ExerciseDetails data={this.getExerciseDetails()}/> : null}

@@ -44,7 +44,7 @@ const WorkoutBuildingScreen = ({navigation}) => {
     switch(apiCallOutcome) {
 
       case AppConstants.RESPONSE_RECEIVED:
-        (Array.isArray(responseJson) && responseJson.length) ? setData(responseJson) : setWorkoutPlanEmpty(true);
+        (Array.isArray(responseJson.results) && responseJson.results.length) ? setData(responseJson.results) : setWorkoutPlanEmpty(true);
         break;
 
       case AppConstants.API_CALL_COMPLETED:

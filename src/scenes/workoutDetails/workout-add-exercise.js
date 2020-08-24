@@ -92,7 +92,7 @@ class WorkoutAddExerciseScreen extends Component {
     }
 
     displaySearchResult(id) {
-        let exercises = this.props.wgerExercises.exercises;
+        let exercises = this.props.wgerExercises.exercises.results;
         var result = exercises.filter(exercise => {
             return exercise.id === id
         });
@@ -144,7 +144,7 @@ class WorkoutAddExerciseScreen extends Component {
             <ScrollView style={styles.container}>
                 <Text style={styles.text}>Exercises</Text>
                 <SearchableList 
-                    list = {this.props.wgerExercises.exercises}
+                    list = {this.props.wgerExercises.exercises.results}
                     displaySearchResult = {(id) => this.displaySearchResult(id)}/>
 
                 {this.state.searchResultData.length ?
