@@ -1,11 +1,15 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
+  "name": "workout-assistant",
+  "main": "lib/index.js",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "build": "babel src/ -d lib/",
+    "prepublish": "npm run build",
+    "flow": "flow"
   },
   "dependencies": {
     "@expo/vector-icons": "^10.2.0",
@@ -31,7 +35,9 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.8.6",
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/preset-flow": "^7.10.4",
     "babel-eslint": "^10.1.0",
     "babel-preset-expo": "~8.1.0",
     "eslint": "^7.7.0",
@@ -40,6 +46,7 @@
     "eslint-plugin-react-native": "^3.8.1",
     "expo": "^38.0.8",
     "expo-constants": "^9.1.1",
+    "flow-bin": "^0.132.0",
     "react-native-clean-project": "^3.4.0"
   },
   "private": true
